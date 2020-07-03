@@ -16,6 +16,16 @@ settings:
   configs:
     Staging:
       SWIFT_ACTIVE_COMPILATION_CONDITIONS: "STAGING"
+packages:
+  Nuke:
+    url: git@github.com:kean/Nuke
+    from: 9.0.0
+  Crossroad:
+    url: git@github.com:giginet/Crossroad.git
+    from: 3.0.0
+  CombineCocoa:
+    url: git@github.com:CombineCommunity/CombineCocoa
+    from: 0.1.0
 targets:
   Common:
     type: framework
@@ -50,6 +60,11 @@ targets:
       - target: Domain
   Mock-App:
     type: application
+    info:
+      path: Mock-App/Info.plist
+      properties:
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UILaunchStoryboardName: LaunchScreen
     platform: iOS
     sources:
       - path: Mock-App
@@ -57,12 +72,15 @@ targets:
       - target: Common
       - target: Domain
       - target: Core
+      # - package: Crossroad
     preBuildScripts:
       - name: "[SwiftLint] Run Script"
         script: "scripts/lint.sh"
     scheme:
       testTargets:
         - DomainTests
+    settings:
+      TARGETED_DEVICE_FAMILY: "1"
   Mock-AppTests:
     type: bundle.unit-test
     platform: iOS
