@@ -1,0 +1,72 @@
+name: Mock-App
+options:
+  minimumXcodeGenVersion: "2.6.0"
+  bundleIdPrefix: "com.dmm.sample"
+  deploymentTarget:
+    iOS: "13.0"
+configs:
+  Debug: debug
+  Staging: release
+  Release: release
+settings:
+  base:
+    SWIFT_VERSION: "5.1"
+    CODE_SIGN_STYLE: "Automatic"
+    TARGETED_DEVICE_FAMILY: "1"
+  configs:
+    Staging:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "STAGING"
+targets:
+  Common:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Common
+  Domain:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Domain
+    dependencies:
+      - target: Common
+    scheme:
+      testTargets:
+        - DomainTests
+  DomainTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: DomainTests
+    dependencies:
+      - target: Domain
+      - target: Mock-App
+  Core:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Core
+    dependencies:
+      - target: Common
+      - target: Domain
+  Mock-App:
+    type: application
+    platform: iOS
+    sources:
+      - path: Mock-App
+    dependencies:
+      - target: Common
+      - target: Domain
+      - target: Core
+    preBuildScripts:
+      - name: "[SwiftLint] Run Script"
+        script: "scripts/lint.sh"
+    scheme:
+      testTargets:
+        - DomainTests
+  Mock-AppTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Mock-AppTests
+    dependencies:
+      - target: Mock-App
