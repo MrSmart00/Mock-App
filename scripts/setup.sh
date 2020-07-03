@@ -23,6 +23,13 @@ fi
 #   echo "  + Carthage found."
 # fi
 
+if [ ! $(which sourcery) ]; then
+  echo "  + Installing Sourcery..."
+  brew install sourcery
+else
+  echo "  + Sourcery found."
+fi
+
 if [ ! $(which swiftlint) ]; then
   echo "  + Installing SwiftLint..."
   brew install swiftlint

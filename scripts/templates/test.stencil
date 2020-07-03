@@ -1,0 +1,4 @@
+{% for type in types.all %}
+// sourcery:file:Generated/{{ type.name}}+TemplateName
+// sourcery:end
+{% endfor %}
