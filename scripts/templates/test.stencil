@@ -1,4 +1,38 @@
-{% for type in types.all %}
-// sourcery:file:Generated/{{ type.name}}+TemplateName
+{% for class in types.classes %}
+// sourcery:inline:{{ class.name }}.TemplateName
+{{ class }}
 // sourcery:end
+{% endfor %}
+
+{% for type in types.all %}
+  {{ type.name }}
+{% endfor %}
+
+{% for protocol in types.protocols %}
+{{ protocol }}
+{% endfor %}
+
+import Foundation
+import UIKit
+import Combine
+import Common
+
+{% for key, value in argument %}
+final class {{ value }}ViewController: UIViewController, Injectable {
+    struct Dependency {
+        let presenter: {{ value }}PresenterProtocol
+    }
+
+    private var dependency: Dependency!
+
+    private var cancellables = Set<AnyCancellable>()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    func inject(dependency: {{ value }}ViewController.Dependency) {
+        self.dependency = dependency
+    }
+}
 {% endfor %}

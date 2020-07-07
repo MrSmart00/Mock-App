@@ -1,15 +1,12 @@
-// Generated using Sourcery 0.17.0 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
-
 import Foundation
 import UIKit
 import Combine
 import Common
 
-final class DummyViewController: UIViewController, Injectable {
+{% for key, value in argument %}
+final class {{ value }}ViewController: UIViewController, Injectable {
     struct Dependency {
-        let presenter: DummyPresenterProtocol
+        let presenter: {{ value }}PresenterProtocol
     }
 
     private var dependency: Dependency!
@@ -20,7 +17,8 @@ final class DummyViewController: UIViewController, Injectable {
         super.viewDidLoad()
     }
 
-    func inject(dependency: DummyViewController.Dependency) {
+    func inject(dependency: {{ value }}ViewController.Dependency) {
         self.dependency = dependency
     }
 }
+{% endfor %}

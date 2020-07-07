@@ -19,16 +19,31 @@ if [ "$FLG_O" = "TRUE" ]; then
 fi
 
 SCENE_NAME=$VALUE_N
-OUTPUT_PATH=$VALUE_O/$VALUE_N
+OUTPUT_PATH=$VALUE_O
 
-rm -rf $OUTPUT_PATH
-mkdir $OUTPUT_PATH
+rm -rf $OUTPUT_PATH/$SCENE_NAME
+mkdir $OUTPUT_PATH/$SCENE_NAME
 
-# cd $OUTPUT_PATH
+sourcery --sources ./scripts/templates/Empty.swift \
+--templates ./scripts/templates/scene.stencil \
+--output ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}.swift \
+--args name=${SCENE_NAME}
 
-touch $OUTPUT_PATH/${SCENE_NAME}.swift
-touch $OUTPUT_PATH/${SCENE_NAME}ViewController.swift
-touch $OUTPUT_PATH/${SCENE_NAME}Presenter.swift
-touch $OUTPUT_PATH/${SCENE_NAME}Interactor.swift
+sourcery --sources ./scripts/templates/Empty.swift \
+--templates ./scripts/templates/interactor.stencil \
+--output ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}Interactor.swift \
+--args name=${SCENE_NAME}
 
-sourcery --sources $OUTPUT_PATH/${SCENE_NAME}.swift --templates ./scripts/templates/test.stencil --output $OUTPUT_PATH/${SCENE_NAME}.swift
+sourcery --sources ./scripts/templates/Empty.swift \
+--templates ./scripts/templates/presenter.stencil \
+--output ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}Presenter.swift \
+--args name=${SCENE_NAME}
+
+sourcery --sources ./scripts/templates/Empty.swift \
+--templates ./scripts/templates/viewcontroller.stencil \
+--output ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}ViewController.swift \
+--args name=${SCENE_NAME}
+
+cp ./scripts/templates/Storyboard.storyboard ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}.storyboard
+
+xcodegen generate
