@@ -18,13 +18,13 @@ settings:
       SWIFT_ACTIVE_COMPILATION_CONDITIONS: "STAGING"
 packages:
   Nuke:
-    url: git@github.com:kean/Nuke
+    url: https://github.com/kean/Nuke.git
     from: 9.0.0
   Crossroad:
-    url: git@github.com:giginet/Crossroad.git
+    url: https://github.com/giginet/Crossroad.git
     from: 3.0.0
   CombineCocoa:
-    url: git@github.com:CombineCommunity/CombineCocoa
+    url: https://github.com/CombineCommunity/CombineCocoa.git
     from: 0.1.0
 targets:
   Common:
