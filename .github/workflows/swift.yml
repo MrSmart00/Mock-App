@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: xcodebuild -workspace Mock-App.xcworkspace -scheme Mock-App -sdk iphonesimulator -configuration Debug build 
     - name: Tests
-      run: xcodebuild -workspace Mock-App.xcworkspace -scheme Mock-App -sdk iphonesimulator -configuration Debug test
+      run: xcodebuild -workspace Mock-App.xcworkspace -scheme Mock-App test
