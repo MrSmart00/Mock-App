@@ -21,8 +21,10 @@ jobs:
       run: sudo xcode-select -s '/Applications/Xcode_11.4.1.app/Contents/Developer'
     - name: Show Xcode version
       run: xcodebuild -version
-    - name: Build Setting
-      run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
+    - name: Build Setting 1 (for Xcode11 bug..)
+      run: rm ~/.ssh/id_rsa
+    - name: Build Setting 2 (for Xcode11 bug..)
+      run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts || true
     - name: Build
       run: xcodebuild -sdk iphonesimulator -configuration Debug build 
     - name: Tests
