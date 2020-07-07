@@ -1,0 +1,10 @@
+import Foundation
+
+{% for key, value in argument %}
+final class {{ value }}Interactor: {{ value }}InteractorProtocol {
+
+    init() {
+    }
+
+}
+{% endfor %}
