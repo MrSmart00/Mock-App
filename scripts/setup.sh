@@ -16,13 +16,6 @@ else
   echo "  + XcodeGen found."
 fi
 
-# if [ ! $(which carthage) ]; then
-#   echo "  + Installing Carthage..."
-#   brew install carthage
-# else
-#   echo "  + Carthage found."
-# fi
-
 if [ ! $(which sourcery) ]; then
   echo "  + Installing Sourcery..."
   brew install sourcery
@@ -44,4 +37,14 @@ else
   echo "  + SwiftFormat found."
 fi
 
-bundle install
+# Bundler
+if test ! $(which bundle); then
+  echo "  + Installing bundler..."
+  gem install bundler
+else
+  echo "  + Bundler found."
+fi
+
+# Gem
+echo "  + Installing gems."
+bundle install --path=vendor/bundle
