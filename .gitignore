@@ -74,5 +74,5 @@ fastlane/test_output
 
 # bundler
 
-/.bundle/
-/vendor/
+.bundle/
+vendor/
