@@ -33,7 +33,7 @@ target 'Mock-App' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for PointClub-iOS
+  pod 'SwiftLint'
 
   target 'Mock-AppTests' do
     inherit! :search_paths
