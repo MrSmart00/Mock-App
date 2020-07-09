@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum Dummy {
+enum Splash {
     public struct Context {
         public init() {}
     }
@@ -14,14 +14,14 @@ enum Dummy {
     }
 }
 
-protocol DummyInteractorProtocol {
+protocol SplashInteractorProtocol {
 
 }
 
-public enum DummyMessage {
+public enum SplashMessage {
 
 }
 
-protocol DummyPresenterProtocol {
-    func dispatch(_ message: DummyMessage)
+protocol SplashPresenterProtocol {
+    func dispatch(_ message: SplashMessage)
 }

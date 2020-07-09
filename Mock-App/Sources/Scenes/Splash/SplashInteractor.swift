@@ -4,7 +4,7 @@
 
 import Foundation
 
-final class DummyInteractor: DummyInteractorProtocol {
+final class SplashInteractor: SplashInteractorProtocol {
 
     init() {
     }

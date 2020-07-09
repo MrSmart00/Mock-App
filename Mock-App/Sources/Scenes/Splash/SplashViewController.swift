@@ -7,9 +7,9 @@ import UIKit
 import Combine
 import Common
 
-final class DummyViewController: UIViewController, Injectable {
+final class SplashViewController: UIViewController, Injectable {
     struct Dependency {
-        let presenter: DummyPresenterProtocol
+        let presenter: SplashPresenterProtocol
     }
 
     private var dependency: Dependency!
@@ -20,7 +20,7 @@ final class DummyViewController: UIViewController, Injectable {
         super.viewDidLoad()
     }
 
-    func inject(dependency: DummyViewController.Dependency) {
+    func inject(dependency: SplashViewController.Dependency) {
         self.dependency = dependency
     }
 }

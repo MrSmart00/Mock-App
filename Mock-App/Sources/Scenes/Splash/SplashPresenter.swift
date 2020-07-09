@@ -5,18 +5,18 @@
 import Foundation
 import Combine
 
-final class DummyPresenter: DummyPresenterProtocol {
-    private let context: Dummy.Context
-    private let wireframeClosure: (Dummy.Wireframe) -> Void
+final class SplashPresenter: SplashPresenterProtocol {
+    private let context: Splash.Context
+    private let wireframeClosure: (Splash.Wireframe) -> Void
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(context: Dummy.Context, wireframeClosure: @escaping (Dummy.Wireframe) -> Void) {
+    init(context: Splash.Context, wireframeClosure: @escaping (Splash.Wireframe) -> Void) {
         self.context = context
         self.wireframeClosure = wireframeClosure
     }
 
-    func dispatch(_ message: DummyMessage) {
+    func dispatch(_ message: SplashMessage) {
         // TODO: Impl with combine
     }
 }
