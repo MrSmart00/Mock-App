@@ -1,0 +1,20 @@
+import UIKit
+import Core
+import Overture
+
+extension SceneAssembler {
+
+{% for key, value in argument %}
+    static func {{ value|lowerFirstLetter }}(context: {{ value }}.Context,
+                       wireframeClosure: @escaping ({{ value }}.Wireframe) -> Void) -> (Environment) -> UIViewController {
+        return { environment in
+            let controller = Storyboard<{{ value }}ViewController>(name: "{{ value }}").instantiate()
+// TODO: inject presenter to {{ value }}ViewController
+//            let presenter = {{ value }}Presenter(context: context, wireframeClosure: wireframeClosure)
+//            controller.inject(dependency: .init(presenter: presenter))
+            return controller
+        }
+    }
+{% endfor %}
+
+}

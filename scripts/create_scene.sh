@@ -44,6 +44,11 @@ sourcery --sources ./scripts/templates/Empty.swift \
 --output ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}ViewController.swift \
 --args name=${SCENE_NAME}
 
+sourcery --sources ./scripts/templates/Empty.swift \
+--templates ./scripts/templates/sceneassembler.stencil \
+--output ./$OUTPUT_PATH/${SCENE_NAME}/SceneAssembler+${SCENE_NAME}.swift \
+--args name=${SCENE_NAME}
+
 cp ./scripts/templates/Storyboard.storyboard ./$OUTPUT_PATH/${SCENE_NAME}/${SCENE_NAME}.storyboard
 
 xcodegen generate
