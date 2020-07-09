@@ -10,7 +10,7 @@ enum Splash {
     }
 
     public enum Wireframe {
-
+        case home
     }
 }
 
@@ -19,7 +19,7 @@ protocol SplashInteractorProtocol {
 }
 
 public enum SplashMessage {
-
+    case viewDidAppear
 }
 
 protocol SplashPresenterProtocol {

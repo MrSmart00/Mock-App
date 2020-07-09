@@ -20,6 +20,11 @@ final class SplashViewController: UIViewController, Injectable {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dependency.presenter.dispatch(.viewDidAppear)
+    }
+
     func inject(dependency: SplashViewController.Dependency) {
         self.dependency = dependency
     }

@@ -17,6 +17,13 @@ final class SplashPresenter: SplashPresenterProtocol {
     }
 
     func dispatch(_ message: SplashMessage) {
-        // TODO: Impl with combine
+        if case .viewDidAppear = message {
+            Timer.publish(every: 1, on: .main, in: .default)
+                .autoconnect()
+                .sink { [unowned self] (_) in
+                    self.wireframeClosure(.home)
+                }
+                .store(in: &cancellables)
+        }
     }
 }
