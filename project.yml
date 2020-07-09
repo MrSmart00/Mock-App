@@ -75,6 +75,7 @@ targets:
       - target: Common
       - target: Domain
       - target: Core
+      - target: Home
       - package: Overture
       # - package: Crossroad
     preBuildScripts:
