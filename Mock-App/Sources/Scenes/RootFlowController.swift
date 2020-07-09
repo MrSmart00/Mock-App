@@ -7,6 +7,7 @@
 
 import UIKit
 import Core
+import Home
 
 class RootFlowController: FlowController {
     private let environmentClosure: () -> Environment
@@ -27,9 +28,26 @@ class RootFlowController: FlowController {
     override func start() {
         let controller = SceneAssembler.splash(
             context: Splash.Context(),
-            wireframeClosure: { _ in
+            wireframeClosure: { [weak self] in
+                if case .home = $0 {
+                    self?.home()
+                }
             }
         )(environmentClosure())
         add(child: controller)
     }
+
+    func home() {
+        let controller = flowAssembler().home()
+        transit(to: controller)
+        controller.start()
+    }
+
+    private func transit(to destinationController: UIViewController) {
+        if let current = root {
+            remove(child: current)
+        }
+        add(child: destinationController)
+    }
+
 }

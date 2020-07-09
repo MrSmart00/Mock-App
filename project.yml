@@ -26,9 +26,6 @@ packages:
   CombineCocoa:
     url: https://github.com/CombineCommunity/CombineCocoa.git
     from: 0.1.0
-  Overture:
-    url: https://git.dmm.com/ringo/Overture.git
-    branch: master
 targets:
   Common:
     type: framework
@@ -75,7 +72,7 @@ targets:
       - target: Common
       - target: Domain
       - target: Core
-      - package: Overture
+      - target: Home
       # - package: Crossroad
     preBuildScripts:
       - name: "[SwiftLint] Run Script"
@@ -90,5 +87,24 @@ targets:
     platform: iOS
     sources:
       - path: Mock-AppTests
+    dependencies:
+      - target: Mock-App
+  Home:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Home
+    dependencies:
+      - target: Common
+      - target: Domain
+      - target: Core
+    scheme:
+      testTargets:
+        - HomeTests
+  HomeTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: DomainTests
     dependencies:
       - target: Mock-App

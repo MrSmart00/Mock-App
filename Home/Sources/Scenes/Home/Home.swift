@@ -4,24 +4,24 @@
 
 import Foundation
 
-enum Splash {
+enum Home {
     public struct Context {
         public init() {}
     }
 
     public enum Wireframe {
-        case home
+
     }
 }
 
-protocol SplashInteractorProtocol {
+protocol HomeInteractorProtocol {
 
 }
 
-public enum SplashMessage {
-    case viewDidAppear
+public enum HomeMessage {
+
 }
 
-protocol SplashPresenterProtocol {
-    func dispatch(_ message: SplashMessage)
+protocol HomePresenterProtocol {
+    func dispatch(_ message: HomeMessage)
 }

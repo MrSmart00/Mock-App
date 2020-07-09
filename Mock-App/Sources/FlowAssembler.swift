@@ -7,6 +7,7 @@
 
 import Foundation
 import Core
+import Home
 
 struct FlowAssembler: FlowAssemblerProtocol {
 
@@ -20,4 +21,7 @@ struct FlowAssembler: FlowAssemblerProtocol {
         RootFlowController(environmentClosure: environmentClosure, flowAssembler: { self })
     }
 
+    func home() -> NavigationFlowController {
+        HomeFlowController(environmentClosure: environmentClosure)
+    }
 }
