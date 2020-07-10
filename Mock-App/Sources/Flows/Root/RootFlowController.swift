@@ -28,16 +28,16 @@ class RootFlowController: FlowController {
         let controller = SceneAssembler.splash(
             context: Splash.Context(),
             wireframeClosure: { [weak self] in
-                if case .home = $0 {
-                    self?.home()
+                if case .mainTab = $0 {
+                    self?.mainTab()
                 }
             }
         )(environmentClosure())
         add(child: controller)
     }
 
-    func home() {
-        let controller = flowAssembler().home()
+    func mainTab() {
+        let controller = flowAssembler().mainTab()
         transit(to: controller)
         controller.start()
     }

@@ -21,7 +21,7 @@ final class SplashPresenter: SplashPresenterProtocol {
             Timer.publish(every: 1, on: .main, in: .default)
                 .autoconnect()
                 .sink { [unowned self] (_) in
-                    self.wireframeClosure(.home)
+                    self.wireframeClosure(.mainTab)
                 }
                 .store(in: &cancellables)
         }

@@ -20,6 +20,10 @@ struct FlowAssembler: FlowAssemblerProtocol {
         RootFlowController(environmentClosure: environmentClosure, flowAssembler: { self })
     }
 
+    func mainTab() -> NavigationFlowController {
+        MainTabFlowController(environmentClosure: environmentClosure)
+    }
+
     func home() -> NavigationFlowController {
         HomeFlowController(environmentClosure: environmentClosure)
     }
