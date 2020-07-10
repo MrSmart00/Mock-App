@@ -72,8 +72,6 @@ targets:
       - target: Common
       - target: Domain
       - target: Core
-      # - target: Home
-      # - package: Crossroad
     preBuildScripts:
       - name: "[SwiftLint] Run Script"
         script: "scripts/lint.sh"
@@ -89,22 +87,3 @@ targets:
       - path: Mock-AppTests
     dependencies:
       - target: Mock-App
-  # Home:
-  #   type: framework
-  #   platform: iOS
-  #   sources:
-  #     - path: Home
-  #   dependencies:
-  #     - target: Common
-  #     - target: Domain
-  #     - target: Core
-  #   scheme:
-  #     testTargets:
-  #       - HomeTests
-  # HomeTests:
-  #   type: bundle.unit-test
-  #   platform: iOS
-  #   sources:
-  #     - path: DomainTests
-  #   dependencies:
-  #     - target: Mock-App
