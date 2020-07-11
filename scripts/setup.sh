@@ -48,3 +48,5 @@ fi
 # Gem
 echo "  + Installing gems."
 bundle install --path=vendor/bundle
+
+bundle exec generamba template install
