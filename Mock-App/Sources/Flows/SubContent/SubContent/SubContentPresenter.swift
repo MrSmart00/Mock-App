@@ -19,6 +19,8 @@ final class SubContentPresenter: SubContentPresenterProtocol {
     }
 
     func dispatch(_ message: SubContentMessage) {
-        // TODO: Impl with combine
+        if case .tappedDetail = message {
+            wireframeClosure(.detail)
+        }
     }
 }

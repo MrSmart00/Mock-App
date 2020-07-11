@@ -21,14 +21,23 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-Te-dDh">
+                                <rect key="frame" x="297" y="792" width="77" height="30"/>
+                                <state key="normal" title="しょうさい"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="QPU-Dy-0Sw" firstAttribute="centerX" secondItem="AR0-Ch-2Fp" secondAttribute="centerX" id="30a-FY-GFH"/>
+                            <constraint firstItem="At2-qW-Z7B" firstAttribute="bottom" secondItem="ubq-Te-dDh" secondAttribute="bottom" constant="40" id="DV0-P1-ioO"/>
+                            <constraint firstItem="At2-qW-Z7B" firstAttribute="trailing" secondItem="ubq-Te-dDh" secondAttribute="trailing" constant="40" id="Hn0-iB-PLj"/>
                             <constraint firstItem="QPU-Dy-0Sw" firstAttribute="centerY" secondItem="AR0-Ch-2Fp" secondAttribute="centerY" id="faG-Uh-DyI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="At2-qW-Z7B"/>
                     </view>
+                    <connections>
+                        <outlet property="detailButton" destination="ubq-Te-dDh" id="Ejj-qu-cq7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O74-wG-zW8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,7 +9,8 @@ import UIKit
 
 public protocol FlowAssemblerProtocol {
     func root() -> FlowController
-    func mainTab() -> NavigationFlowController
+    func mainTab() -> FlowController
     func home() -> NavigationFlowController
+    func subContent() -> NavigationFlowController
     // TODO: Add directions
 }

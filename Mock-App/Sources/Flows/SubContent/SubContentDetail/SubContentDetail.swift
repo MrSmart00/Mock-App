@@ -4,24 +4,24 @@
 
 import Foundation
 
-enum SubContent {
+enum SubContentDetail {
     public struct Context {
         public init() {}
     }
 
     public enum Wireframe {
-        case detail
+
     }
 }
 
-protocol SubContentInteractorProtocol {
+protocol SubContentDetailInteractorProtocol {
 
 }
 
-public enum SubContentMessage {
-    case tappedDetail
+public enum SubContentDetailMessage {
+
 }
 
-protocol SubContentPresenterProtocol {
-    func dispatch(_ message: SubContentMessage)
+protocol SubContentDetailPresenterProtocol {
+    func dispatch(_ message: SubContentDetailMessage)
 }

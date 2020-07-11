@@ -25,9 +25,21 @@ class SubContentFlowController: NavigationFlowController {
     public override func start() {
         let controller = SceneAssembler.subContent(
             context: .init(),
-            wireframeClosure: { _ in  }
+            wireframeClosure: { [weak self] in
+                switch $0 {
+                case .detail:
+                    self?.detail()
+                }
+            }
         )(environmentClosure())
         navigation.viewControllers = [controller]
     }
 
+    private func detail() {
+        let controller = SceneAssembler.subContentDetail(
+            context: .init(),
+            wireframeClosure: { _ in  }
+        )(environmentClosure())
+        push(controller, animated: true)
+    }
 }
