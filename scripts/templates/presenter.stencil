@@ -4,12 +4,14 @@ import Combine
 {% for key, value in argument %}
 final class {{ value }}Presenter: {{ value }}PresenterProtocol {
     private let context: {{ value }}.Context
+    private let interactor: {{ value }}InteractorProtocol
     private let wireframeClosure: ({{ value }}.Wireframe) -> Void
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(context: {{ value }}.Context, wireframeClosure: @escaping ({{ value }}.Wireframe) -> Void) {
+    init(context: {{ value }}.Context, interactor: {{ value }}InteractorProtocol, wireframeClosure: @escaping ({{ value }}.Wireframe) -> Void) {
         self.context = context
+        self.interactor = interactor
         self.wireframeClosure = wireframeClosure
     }
 

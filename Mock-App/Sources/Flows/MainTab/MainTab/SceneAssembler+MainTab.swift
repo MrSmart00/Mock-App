@@ -8,9 +8,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func mainTab(context: MainTab.Context,
-                        viewControllers: [UIViewController],
-                        wireframeClosure: @escaping (MainTab.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func mainTab(context: MainTab.Context, viewControllers: [UIViewController], wireframeClosure: @escaping (MainTab.Wireframe) -> Void) -> (Environment) -> UIViewController {
         return { environment in
             let controller = Storyboard<MainTabViewController>(name: "MainTab").instantiate()
             controller.setViewControllers(viewControllers, animated: false)
