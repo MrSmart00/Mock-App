@@ -1,0 +1,35 @@
+### Headers settings
+company: hoge.company
+
+### Xcode project settings
+project_name: Mock-App
+xcodeproj_path: Mock-App.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: Mock-App
+
+# The file path for new modules
+project_file_path: Mock-App/Sources/Scenes
+
+# The Xcode group path to new modules
+project_group_path: Mock-App/Sources/Scenes
+
+### Tests generation settings section
+# The tests target name
+test_target: Mock-AppTests
+
+# The file path for new tests
+test_file_path: Mock-AppTests/Sources
+
+# The Xcode group path to new tests
+test_group_path: Mock-AppTests/Sources
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+catalogs:
+- 'https://github.com/MrSmart00/Generamba-Templates.git'
+templates:
+- {name: my_viper}

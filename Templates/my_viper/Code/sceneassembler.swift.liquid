@@ -1,0 +1,19 @@
+{% include 'header' %}
+
+import UIKit
+import Core
+import Common
+
+extension SceneAssembler {
+
+    static func {{ module_info.name | downcase }}(context: {{ module_info.name }}.Context, wireframeClosure: @escaping ({{ module_info.name }}.Wireframe) -> Void) -> (Environment) -> UIViewController {
+        return { environment in
+            let controller = Storyboard<{{ module_info.name }}ViewController>(name: "{{ module_info.name }}").instantiate()
+// TODO: inject presenter to {{ module_info.name }}ViewController
+//            let presenter = {{ module_info.name }}Presenter(context: context, interactor: {{ module_info.name }}Interactor(), wireframeClosure: wireframeClosure)
+//            controller.inject(dependency: .init(presenter: presenter))
+            return controller
+        }
+    }
+
+}
