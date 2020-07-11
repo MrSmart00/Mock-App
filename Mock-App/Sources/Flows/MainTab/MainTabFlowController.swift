@@ -28,7 +28,7 @@ class MainTabFlowController: NavigationFlowController {
             context: .init(),
             viewControllers: [
                 home(),
-                home()
+                sub()
             ],
             wireframeClosure: { _ in  }
         )(environmentClosure())
@@ -42,6 +42,16 @@ class MainTabFlowController: NavigationFlowController {
         )(environmentClosure())
         .apply {
             $0.tabBarItem.title = "ほーむ"
+        }
+    }
+
+    private func sub() -> UIViewController {
+        SceneAssembler.subContent(
+            context: .init(),
+            wireframeClosure: { _ in  }
+        )(environmentClosure())
+        .apply {
+            $0.tabBarItem.title = "さぶ"
         }
     }
 }
