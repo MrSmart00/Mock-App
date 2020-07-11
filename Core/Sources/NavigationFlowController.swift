@@ -47,16 +47,16 @@ open class NavigationFlowController: UIViewController, DeepLinkHandler {
                 navigation.view.topAnchor.constraint(equalTo: view.topAnchor),
                 navigation.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 navigation.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                navigation.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                navigation.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ]
         )
     }
 
     public func push(_ viewController: UIViewController, animated: Bool) {
-        navigationController?.pushViewController(viewController, animated: animated)
+        navigation.pushViewController(viewController, animated: animated)
     }
 
     public func pop(animated: Bool) {
-        navigationController?.popViewController(animated: animated)
+        navigation.popViewController(animated: animated)
     }
 }

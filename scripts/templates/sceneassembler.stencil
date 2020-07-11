@@ -9,7 +9,7 @@ extension SceneAssembler {
         return { environment in
             let controller = Storyboard<{{ value }}ViewController>(name: "{{ value }}").instantiate()
 // TODO: inject presenter to {{ value }}ViewController
-//            let presenter = {{ value }}Presenter(context: context, wireframeClosure: wireframeClosure)
+//            let presenter = {{ value }}Presenter(context: context, interactor: {{ value }}Interactor(), wireframeClosure: wireframeClosure)
 //            controller.inject(dependency: .init(presenter: presenter))
             return controller
         }

@@ -9,16 +9,18 @@ import UIKit
 import Core
 import Common
 
-class MainTabFlowController: NavigationFlowController {
+class MainTabFlowController: FlowController {
 
     private let environmentClosure: () -> Environment
+    private let flowAssembler: () -> FlowAssemblerProtocol
 
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(environmentClosure: @escaping () -> Environment) {
+    public init(environmentClosure: @escaping () -> Environment, flowAssembler: @escaping () -> FlowAssemblerProtocol) {
         self.environmentClosure = environmentClosure
+        self.flowAssembler = flowAssembler
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,20 +30,26 @@ class MainTabFlowController: NavigationFlowController {
             context: .init(),
             viewControllers: [
                 home(),
-                home()
+                sub()
             ],
             wireframeClosure: { _ in  }
         )(environmentClosure())
-        navigation.viewControllers = [controller]
+        add(child: controller)
     }
 
     private func home() -> UIViewController {
-        SceneAssembler.home(
-            context: .init(),
-            wireframeClosure: { _ in  }
-        )(environmentClosure())
-        .apply {
-            $0.tabBarItem.title = "ほーむ"
-        }
+        flowAssembler().home()
+            .apply {
+                $0.tabBarItem.title = "ほーむ"
+                $0.start()
+            }
+    }
+
+    private func sub() -> UIViewController {
+        flowAssembler().subContent()
+            .apply {
+                $0.tabBarItem.title = "さぶ"
+                $0.start()
+            }
     }
 }
