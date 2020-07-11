@@ -76,3 +76,7 @@ fastlane/test_output
 
 .bundle/
 vendor/
+
+# Generamba
+
+Templates/
