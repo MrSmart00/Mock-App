@@ -5,8 +5,7 @@ import Common
 extension SceneAssembler {
 
 {% for key, value in argument %}
-    static func {{ value|lowerFirstLetter }}(context: {{ value }}.Context,
-                       wireframeClosure: @escaping ({{ value }}.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func {{ value|lowerFirstLetter }}(context: {{ value }}.Context, wireframeClosure: @escaping ({{ value }}.Wireframe) -> Void) -> (Environment) -> UIViewController {
         return { environment in
             let controller = Storyboard<{{ value }}ViewController>(name: "{{ value }}").instantiate()
 // TODO: inject presenter to {{ value }}ViewController
