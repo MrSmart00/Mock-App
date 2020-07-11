@@ -1,12 +1,13 @@
+{% include 'header' %}
+
 import Foundation
 import UIKit
 import Combine
 import Common
 
-{% for key, value in argument %}
-final class {{ value }}ViewController: UIViewController, Injectable {
+final class {{ module_info.name }}ViewController: UIViewController, Injectable {
     struct Dependency {
-        let presenter: {{ value }}PresenterProtocol
+        let presenter: {{ module_info.name }}PresenterProtocol
     }
 
     private var dependency: Dependency!
@@ -17,8 +18,7 @@ final class {{ value }}ViewController: UIViewController, Injectable {
         super.viewDidLoad()
     }
 
-    func inject(dependency: {{ value }}ViewController.Dependency) {
+    func inject(dependency: {{ module_info.name }}ViewController.Dependency) {
         self.dependency = dependency
     }
 }
-{% endfor %}
