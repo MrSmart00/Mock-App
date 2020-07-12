@@ -26,7 +26,7 @@ class MainTabFlowController: FlowController {
     }
 
     public override func start() {
-        let controller = SceneAssembler.mainTab(
+        let controller = SceneAssembler.MainTab(
             context: .init(),
             viewControllers: [
                 home(),

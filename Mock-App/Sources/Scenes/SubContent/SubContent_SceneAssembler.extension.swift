@@ -1,6 +1,10 @@
-// Generated using Sourcery 0.17.0 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
+//
+//  SubContent_SceneAssembler.extension.swift
+//  Mock-App
+//
+//  Created by Hiroya Hinomori on 12/07/2020.
+//  Copyright © 2020 hoge.company. All rights reserved.
+//
 
 import UIKit
 import Core
@@ -8,7 +12,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func subContent(context: SubContent.Context, wireframeClosure: @escaping (SubContent.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func SubContent(context: SubContent.Context, wireframeClosure: @escaping (SubContent.Wireframe) -> Void) -> (Environment) -> UIViewController {
         return { environment in
             let controller = Storyboard<SubContentViewController>(name: "SubContent").instantiate()
             let presenter = SubContentPresenter(context: context, interactor: SubContentInteractor(), wireframeClosure: wireframeClosure)
