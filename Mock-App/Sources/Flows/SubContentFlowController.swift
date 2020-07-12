@@ -38,8 +38,17 @@ class SubContentFlowController: NavigationFlowController {
     private func detail() {
         let controller = SceneAssembler.subContentDetail(
             context: .init(),
-            wireframeClosure: { _ in  }
+            wireframeClosure: { [weak self] in
+                switch $0 {
+                case .home:
+                    self?.home()
+                }
+            }
         )(environmentClosure())
-        push(controller, animated: true)
+        present(controller, animated: true, completion: nil)
+    }
+
+    private func home() {
+
     }
 }

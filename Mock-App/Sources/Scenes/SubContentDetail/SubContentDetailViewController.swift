@@ -6,6 +6,7 @@ import Foundation
 import UIKit
 import Combine
 import Common
+import CombineCocoa
 
 final class SubContentDetailViewController: UIViewController, Injectable {
     struct Dependency {
@@ -16,8 +17,17 @@ final class SubContentDetailViewController: UIViewController, Injectable {
 
     private var cancellables = Set<AnyCancellable>()
 
+    @IBOutlet weak var homeButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        homeButton
+            .tapPublisher
+            .sink { [weak self] in
+                self?.dependency.presenter.dispatch(.tappedHome)
+            }
+            .store(in: &cancellables)
     }
 
     func inject(dependency: SubContentDetailViewController.Dependency) {

@@ -10,7 +10,7 @@ enum SubContentDetail {
     }
 
     public enum Wireframe {
-
+        case home
     }
 }
 
@@ -19,7 +19,7 @@ protocol SubContentDetailInteractorProtocol {
 }
 
 public enum SubContentDetailMessage {
-
+    case tappedHome
 }
 
 protocol SubContentDetailPresenterProtocol {

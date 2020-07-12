@@ -19,6 +19,9 @@ final class SubContentDetailPresenter: SubContentDetailPresenterProtocol {
     }
 
     func dispatch(_ message: SubContentDetailMessage) {
-        // TODO: Impl with combine
+        switch message {
+        case .tappedHome:
+            wireframeClosure(.home)
+        }
     }
 }
