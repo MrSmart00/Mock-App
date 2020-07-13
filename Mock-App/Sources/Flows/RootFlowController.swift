@@ -25,7 +25,7 @@ class RootFlowController: FlowController {
     }
 
     override func start() {
-        let controller = SceneAssembler.splash(
+        let controller = SceneAssembler.Splash(
             context: Splash.Context(),
             wireframeClosure: { [weak self] in
                 if case .mainTab = $0 {

@@ -1,6 +1,10 @@
-// Generated using Sourcery 0.17.0 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
+//
+//  SubContentInteractor.swift
+//  Mock-App
+//
+//  Created by Hiroya Hinomori on 12/07/2020.
+//  Copyright © 2020 hoge.company. All rights reserved.
+//
 
 import Foundation
 

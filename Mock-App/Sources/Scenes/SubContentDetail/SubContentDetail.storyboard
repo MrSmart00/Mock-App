@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,14 +21,23 @@
                                 <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-Dg-uHC">
+                                <rect key="frame" x="176" y="533" width="62" height="30"/>
+                                <state key="normal" title="ほーむへ"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="agG-CD-erj" firstAttribute="centerY" secondItem="f3j-fB-rgd" secondAttribute="centerY" id="034-gx-Zax"/>
+                            <constraint firstItem="xdc-Dg-uHC" firstAttribute="centerX" secondItem="f3j-fB-rgd" secondAttribute="centerX" id="fPa-FB-qrG"/>
                             <constraint firstItem="agG-CD-erj" firstAttribute="centerX" secondItem="f3j-fB-rgd" secondAttribute="centerX" id="jbA-FX-tkU"/>
+                            <constraint firstItem="xdc-Dg-uHC" firstAttribute="centerY" secondItem="f3j-fB-rgd" secondAttribute="centerY" constant="100" id="kWd-JP-fWT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cb7-mi-1zw"/>
                     </view>
+                    <connections>
+                        <outlet property="homeButton" destination="xdc-Dg-uHC" id="PeK-6d-zaR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAa-1h-8z9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
