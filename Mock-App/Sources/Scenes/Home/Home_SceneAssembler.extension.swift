@@ -12,7 +12,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func Home(context: Home.Context, wireframeClosure: @escaping (Home.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func Home(context: Home.Context, wireframeClosure: @escaping (Home.Wireframe) -> Void) -> (Environment) -> UIViewController { // swiftlint:disable:this identifier_name line_length
         return { environment in
             let controller = Storyboard<HomeViewController>(name: "Home").instantiate()
 // TODO: inject presenter to HomeViewController

@@ -12,7 +12,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func SubContentDetail(context: SubContentDetail.Context, wireframeClosure: @escaping (SubContentDetail.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func SubContentDetail(context: SubContentDetail.Context, wireframeClosure: @escaping (SubContentDetail.Wireframe) -> Void) -> (Environment) -> UIViewController { // swiftlint:disable:this identifier_name line_length
         return { environment in
             let controller = Storyboard<SubContentDetailViewController>(name: "SubContentDetail").instantiate()
             let presenter = SubContentDetailPresenter(context: context, interactor: SubContentDetailInteractor(), wireframeClosure: wireframeClosure)

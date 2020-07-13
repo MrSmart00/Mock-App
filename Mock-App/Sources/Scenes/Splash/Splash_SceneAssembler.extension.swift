@@ -12,7 +12,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func Splash(context: Splash.Context, wireframeClosure: @escaping (Splash.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func Splash(context: Splash.Context, wireframeClosure: @escaping (Splash.Wireframe) -> Void) -> (Environment) -> UIViewController { // swiftlint:disable:this identifier_name line_length
         return { environment in
             let controller = Storyboard<SplashViewController>(name: "Splash").instantiate()
             let presenter = SplashPresenter(context: context, interactor: SplashInteractor(), wireframeClosure: wireframeClosure)

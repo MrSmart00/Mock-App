@@ -9,16 +9,17 @@
 import UIKit
 import Core
 import Common
+import Domain
 
 extension SceneAssembler {
 
-    static func MainTab(context: MainTab.Context, viewControllers: [UIViewController], wireframeClosure: @escaping (MainTab.Wireframe) -> Void) -> (Environment) -> UIViewController {
+    static func MainTab(context: MainTab.Context, contents: [MainTabContent], wireframeClosure: @escaping (MainTab.Wireframe) -> Void) -> (Environment) -> UIViewController&MainTabSelectable { // swiftlint:disable:this identifier_name line_length
         return { environment in
             let controller = Storyboard<MainTabViewController>(name: "MainTab").instantiate()
-            controller.setViewControllers(viewControllers, animated: false)
-    // TODO: inject presenter to MainTabViewController
-    //            let presenter = MainTabPresenter(context: context, wireframeClosure: wireframeClosure)
-    //            controller.inject(dependency: .init(presenter: presenter))
+            let presenter = MainTabPresenter(context: context,
+                                             interactor: MainTabInteractor(),
+                                             wireframeClosure: wireframeClosure)
+            controller.inject(dependency: .init(presenter: presenter, contents: contents))
             return controller
         }
     }

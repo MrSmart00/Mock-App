@@ -7,6 +7,7 @@
 
 import Foundation
 import Core
+import Domain
 
 struct FlowAssembler: FlowAssemblerProtocol {
 
@@ -28,7 +29,7 @@ struct FlowAssembler: FlowAssemblerProtocol {
         HomeFlowController(environmentClosure: environmentClosure)
     }
 
-    func subContent() -> NavigationFlowController {
-        SubContentFlowController(environmentClosure: environmentClosure)
+    func subContent(mainTabClosure: ((MainTabItem) -> Void)? = nil) -> NavigationFlowController {
+        SubContentFlowController(environmentClosure: environmentClosure, mainTabClosure: mainTabClosure)
     }
 }
