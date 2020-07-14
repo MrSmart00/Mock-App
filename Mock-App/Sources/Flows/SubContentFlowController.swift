@@ -25,7 +25,7 @@ class SubContentFlowController: NavigationFlowController {
     }
 
     public override func start() {
-        let controller = SceneAssembler.SubContent(
+        let controller = SceneAssembler.subcontent(
             context: .init(),
             wireframeClosure: { [weak self] in
                 switch $0 {
