@@ -2,7 +2,7 @@
 //  Home_SceneAssembler.extension.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func Home(context: Home.Context, wireframeClosure: @escaping (Home.Wireframe) -> Void) -> (Environment) -> UIViewController { // swiftlint:disable:this identifier_name line_length
+    static func home(context: Home.Context, wireframeClosure: @escaping (Home.Wireframe) -> Void) -> (Environment) -> HomeView {
         return { environment in
             let controller = Storyboard<HomeViewController>(name: "Home").instantiate()
 // TODO: inject presenter to HomeViewController

@@ -2,7 +2,7 @@
 //  SubContentDetailViewController.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ import Combine
 import Common
 import CombineCocoa
 
-final class SubContentDetailViewController: UIViewController, Injectable {
+final class SubContentDetailViewController: UIViewController, SubContentDetailView, Injectable {
     struct Dependency {
-        let presenter: SubContentDetailPresenterProtocol
+        let presenter: SubContentDetailPresentation
     }
 
     private var dependency: Dependency!

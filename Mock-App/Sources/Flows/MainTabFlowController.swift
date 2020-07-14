@@ -14,7 +14,8 @@ class MainTabFlowController: FlowController {
 
     private let environmentClosure: () -> Environment
     private let flowAssembler: () -> FlowAssemblerProtocol
-    private var maintabSelector: MainTabSelectable?
+
+    private weak var maintabView: MainTabView?
 
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -28,7 +29,7 @@ class MainTabFlowController: FlowController {
     }
 
     public override func start() {
-        let controller = SceneAssembler.MainTab(
+        maintabView = SceneAssembler.maintab(
             context: .init(),
             contents: [
                 home(),
@@ -36,8 +37,7 @@ class MainTabFlowController: FlowController {
             ],
             wireframeClosure: { _ in  }
         )(environmentClosure())
-        add(child: controller)
-        maintabSelector = controller
+        maintabView.compact { [weak self] in self?.add(child: $0) }
     }
 
     private func home() -> MainTabContent {
@@ -52,14 +52,10 @@ class MainTabFlowController: FlowController {
             item: .sub,
             controller: flowAssembler()
                 .subContent(mainTabClosure: { [weak self] in
-                    self?.maintabSelector?.selecteTab($0)
+                    self?.maintabView?.selecteTab($0)
                 })
                 .apply { $0.start() }
         )
     }
 
-}
-
-protocol MainTabSelectable {
-    func selecteTab(_ item: MainTabItem)
 }

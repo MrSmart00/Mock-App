@@ -2,11 +2,11 @@
 //  SubContentDetail.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum SubContentDetail {
     public struct Context {
@@ -18,7 +18,7 @@ enum SubContentDetail {
     }
 }
 
-protocol SubContentDetailInteractorProtocol {
+protocol SubContentDetailUsecase {
 
 }
 
@@ -26,6 +26,10 @@ public enum SubContentDetailMessage {
     case tappedHome
 }
 
-protocol SubContentDetailPresenterProtocol {
+protocol SubContentDetailPresentation {
     func dispatch(_ message: SubContentDetailMessage)
+}
+
+protocol SubContentDetailView: UIViewController {
+
 }

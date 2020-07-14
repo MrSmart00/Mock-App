@@ -2,21 +2,21 @@
 //  SubContentPresenter.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
 import Foundation
 import Combine
 
-final class SubContentPresenter: SubContentPresenterProtocol {
+final class SubContentPresenter: SubContentPresentation {
     private let context: SubContent.Context
-    private let interactor: SubContentInteractorProtocol
+    private let interactor: SubContentUsecase
     private let wireframeClosure: (SubContent.Wireframe) -> Void
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(context: SubContent.Context, interactor: SubContentInteractorProtocol, wireframeClosure: @escaping (SubContent.Wireframe) -> Void) {
+    init(context: SubContent.Context, interactor: SubContentUsecase, wireframeClosure: @escaping (SubContent.Wireframe) -> Void) {
         self.context = context
         self.interactor = interactor
         self.wireframeClosure = wireframeClosure

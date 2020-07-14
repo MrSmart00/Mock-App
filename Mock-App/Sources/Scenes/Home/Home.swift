@@ -2,11 +2,11 @@
 //  Home.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Home {
     public struct Context {
@@ -18,7 +18,7 @@ enum Home {
     }
 }
 
-protocol HomeInteractorProtocol {
+protocol HomeUsecase {
 
 }
 
@@ -26,6 +26,10 @@ public enum HomeMessage {
 
 }
 
-protocol HomePresenterProtocol {
+protocol HomePresentation {
     func dispatch(_ message: HomeMessage)
+}
+
+protocol HomeView: UIViewController {
+
 }

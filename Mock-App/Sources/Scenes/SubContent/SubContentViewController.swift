@@ -2,7 +2,7 @@
 //  SubContentViewController.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ import Combine
 import Common
 import CombineCocoa
 
-final class SubContentViewController: UIViewController, Injectable {
+final class SubContentViewController: UIViewController, SubContentView, Injectable {
     struct Dependency {
-        let presenter: SubContentPresenterProtocol
+        let presenter: SubContentPresentation
     }
 
     private var dependency: Dependency!

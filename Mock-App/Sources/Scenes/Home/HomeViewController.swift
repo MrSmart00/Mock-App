@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -11,9 +11,9 @@ import UIKit
 import Combine
 import Common
 
-final class HomeViewController: UIViewController, Injectable {
+final class HomeViewController: UIViewController, HomeView, Injectable {
     struct Dependency {
-        let presenter: HomePresenterProtocol
+        let presenter: HomePresentation
     }
 
     private var dependency: Dependency!
