@@ -2,11 +2,11 @@
 //  Splash.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Splash {
     public struct Context {
@@ -18,7 +18,7 @@ enum Splash {
     }
 }
 
-protocol SplashInteractorProtocol {
+protocol SplashUsecase {
 
 }
 
@@ -26,6 +26,10 @@ public enum SplashMessage {
     case viewDidAppear
 }
 
-protocol SplashPresenterProtocol {
+protocol SplashPresentation {
     func dispatch(_ message: SplashMessage)
+}
+
+protocol SplashView: UIViewController {
+
 }

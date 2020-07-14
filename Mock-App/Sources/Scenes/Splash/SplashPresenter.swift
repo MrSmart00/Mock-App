@@ -2,21 +2,21 @@
 //  SplashPresenter.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
 import Foundation
 import Combine
 
-final class SplashPresenter: SplashPresenterProtocol {
+final class SplashPresenter: SplashPresentation {
     private let context: Splash.Context
-    private let interactor: SplashInteractorProtocol
+    private let interactor: SplashUsecase
     private let wireframeClosure: (Splash.Wireframe) -> Void
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(context: Splash.Context, interactor: SplashInteractorProtocol, wireframeClosure: @escaping (Splash.Wireframe) -> Void) {
+    init(context: Splash.Context, interactor: SplashUsecase, wireframeClosure: @escaping (Splash.Wireframe) -> Void) {
         self.context = context
         self.interactor = interactor
         self.wireframeClosure = wireframeClosure

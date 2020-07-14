@@ -2,7 +2,7 @@
 //  SplashViewController.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -11,9 +11,9 @@ import UIKit
 import Combine
 import Common
 
-final class SplashViewController: UIViewController, Injectable {
+final class SplashViewController: UIViewController, SplashView, Injectable {
     struct Dependency {
-        let presenter: SplashPresenterProtocol
+        let presenter: SplashPresentation
     }
 
     private var dependency: Dependency!
