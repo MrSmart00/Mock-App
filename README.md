@@ -12,3 +12,12 @@
 `$ ./scripts/scene.sh YOUR_SCENE_NAME`
 
 ex) $ ./scripts/scene.sh Dummy
+
+## Scene Structure
+| layer | protocol | implementation |
+|:--:|:--:|:--:|
+| View | { name }View | { name }ViewController |
+| Interactor | { name }Usecase | { name }Interactor |
+| Presenter | { name }Presentation | { name }Presenter |
+| Entity | - | - |
+| Router | | FlowController |
