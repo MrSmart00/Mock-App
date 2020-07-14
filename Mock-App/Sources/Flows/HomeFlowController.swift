@@ -23,7 +23,7 @@ public class HomeFlowController: NavigationFlowController {
     }
 
     public override func start() {
-        let controller = SceneAssembler.Home(
+        let controller = SceneAssembler.home(
             context: .init(),
             wireframeClosure: { _ in  }
         )(environmentClosure())
