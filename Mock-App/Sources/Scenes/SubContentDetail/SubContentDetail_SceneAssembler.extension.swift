@@ -2,7 +2,7 @@
 //  SubContentDetail_SceneAssembler.extension.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Common
 
 extension SceneAssembler {
 
-    static func SubContentDetail(context: SubContentDetail.Context, wireframeClosure: @escaping (SubContentDetail.Wireframe) -> Void) -> (Environment) -> UIViewController { // swiftlint:disable:this identifier_name line_length
+    static func subcontentdetail(context: SubContentDetail.Context, wireframeClosure: @escaping (SubContentDetail.Wireframe) -> Void) -> (Environment) -> SubContentDetailView {
         return { environment in
             let controller = Storyboard<SubContentDetailViewController>(name: "SubContentDetail").instantiate()
             let presenter = SubContentDetailPresenter(context: context, interactor: SubContentDetailInteractor(), wireframeClosure: wireframeClosure)

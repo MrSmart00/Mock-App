@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Combine
 import Common
+import CombineCocoa
 
 final class SubContentViewController: UIViewController, SubContentView, Injectable {
     struct Dependency {
