@@ -2,11 +2,12 @@
 //  MainTab.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Domain
 
 enum MainTab {
     public struct Context {
@@ -18,7 +19,7 @@ enum MainTab {
     }
 }
 
-protocol MainTabInteractorProtocol {
+protocol MainTabUsecase {
 
 }
 
@@ -26,6 +27,10 @@ public enum MainTabMessage {
 
 }
 
-protocol MainTabPresenterProtocol {
+protocol MainTabPresentation {
     func dispatch(_ message: MainTabMessage)
+}
+
+protocol MainTabView: UIViewController {
+    func selecteTab(_ item: MainTabItem)
 }

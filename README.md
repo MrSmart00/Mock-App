@@ -9,6 +9,6 @@
 
 ## Create Scene
 
-`$ bundle exec generamba gen { SCENE_NAME } my_viper`
+`$ ./scripts/scene.sh YOUR_SCENE_NAME`
 
-ex) $ bundle exec generamba gen Dummy my_viper
+ex) $ ./scripts/scene.sh Dummy

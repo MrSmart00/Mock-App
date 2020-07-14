@@ -2,7 +2,7 @@
 //  MainTabViewController.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 12/07/2020.
+//  Created by Hinomori Hiroya on 14/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ import Combine
 import Common
 import Domain
 
-final class MainTabViewController: UITabBarController, Injectable {
+final class MainTabViewController: UITabBarController, MainTabView, Injectable {
     struct Dependency {
-        let presenter: MainTabPresenterProtocol
+        let presenter: MainTabPresentation
         let contents: [MainTabContent]
     }
 
@@ -36,9 +36,6 @@ final class MainTabViewController: UITabBarController, Injectable {
     func inject(dependency: MainTabViewController.Dependency) {
         self.dependency = dependency
     }
-}
-
-extension MainTabViewController: MainTabSelectable {
 
     func selecteTab(_ item: MainTabItem) {
         let content = dependency.contents.first { (content) -> Bool in
