@@ -34,7 +34,7 @@ final class MainTabViewController: UITabBarController, MainTabView, Injectable {
         setViewControllers(controllers, animated: false)
 
         dependency.presenter.state
-            .sink(receiveValue: bind(state:))
+            .sink(receiveValue: { [weak self] in self?.bind(state: $0) })
             .store(in: &cancellables)
     }
 

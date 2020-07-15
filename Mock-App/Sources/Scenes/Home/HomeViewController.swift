@@ -26,7 +26,7 @@ final class HomeViewController: UIViewController, HomeView, Injectable {
         super.viewDidLoad()
 
         dependency.presenter.state
-            .sink(receiveValue: bind(state:))
+            .sink(receiveValue: { [weak self] in self?.bind(state: $0) })
             .store(in: &cancellables)
     }
 
