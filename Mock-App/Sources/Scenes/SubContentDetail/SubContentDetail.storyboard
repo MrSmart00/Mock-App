@@ -37,6 +37,7 @@
                     </view>
                     <connections>
                         <outlet property="homeButton" destination="xdc-Dg-uHC" id="PeK-6d-zaR"/>
+                        <outlet property="titleLabel" destination="agG-CD-erj" id="IxH-dO-fus"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KAa-1h-8z9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

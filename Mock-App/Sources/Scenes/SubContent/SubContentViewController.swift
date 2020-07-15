@@ -21,6 +21,7 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
 
     private var cancellables = Set<AnyCancellable>()
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
 
     override func viewDidLoad() {
@@ -42,7 +43,8 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
     }
 
     private func bind(state: SubContent.State) {
-        // TODO: layout a view from state
+        titleLabel.text = state.title
+        detailButton.setTitle(state.buttonTitle, for: .normal)
     }
 
 }

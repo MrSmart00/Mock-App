@@ -21,9 +21,10 @@ enum SubContent {
 
     public struct State {
         static var initial: State {
-            .init()
+            .init(title: "さぶこんてんと", buttonTitle: "しょうさいへ")
         }
-        // TODO: Add property for view layouts
+        let title: String
+        let buttonTitle: String
     }
 
     public enum Message {
