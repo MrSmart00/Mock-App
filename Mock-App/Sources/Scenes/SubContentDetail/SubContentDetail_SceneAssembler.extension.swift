@@ -2,7 +2,7 @@
 //  SubContentDetail_SceneAssembler.extension.swift
 //  Mock-App
 //
-//  Created by Hinomori Hiroya on 14/07/2020.
+//  Created by Hiroya Hinomori on 15/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
