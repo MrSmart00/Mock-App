@@ -2,7 +2,7 @@
 //  HomePresenter.swift
 //  Mock-App
 //
-//  Created by Hinomori Hiroya on 14/07/2020.
+//  Created by Hiroya Hinomori on 15/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 final class HomePresenter: HomePresentation {
-    var state: CurrentValueSubject<HomeState, Never> = .init(.initial)
+    var state: CurrentValueSubject<Home.State, Never> = .init(.initial)
 
     private let context: Home.Context
     private let interactor: HomeUsecase
@@ -24,7 +24,7 @@ final class HomePresenter: HomePresentation {
         self.wireframeClosure = wireframeClosure
     }
 
-    func dispatch(_ message: HomeMessage) {
+    func dispatch(_ message: Home.Message) {
         // TODO: Impl with combine
     }
 }
