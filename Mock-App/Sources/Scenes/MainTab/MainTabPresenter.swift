@@ -2,7 +2,7 @@
 //  MainTabPresenter.swift
 //  Mock-App
 //
-//  Created by Hinomori Hiroya on 14/07/2020.
+//  Created by Hiroya Hinomori on 15/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -10,6 +10,8 @@ import Foundation
 import Combine
 
 final class MainTabPresenter: MainTabPresentation {
+    var state: CurrentValueSubject<MainTab.State, Never> = .init(.initial)
+
     private let context: MainTab.Context
     private let interactor: MainTabUsecase
     private let wireframeClosure: (MainTab.Wireframe) -> Void
@@ -22,7 +24,7 @@ final class MainTabPresenter: MainTabPresentation {
         self.wireframeClosure = wireframeClosure
     }
 
-    func dispatch(_ message: MainTabMessage) {
+    func dispatch(_ message: MainTab.Message) {
         // TODO: Impl with combine
     }
 }
