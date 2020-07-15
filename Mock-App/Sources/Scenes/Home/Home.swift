@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 enum Home {
     public struct Context {
@@ -18,6 +19,14 @@ enum Home {
     }
 }
 
+struct HomeState {
+    static var initial: HomeState {
+        .init(title: "ほーむ")
+    }
+
+    let title: String
+}
+
 protocol HomeUsecase {
 
 }
@@ -27,6 +36,8 @@ public enum HomeMessage {
 }
 
 protocol HomePresentation {
+    var state: CurrentValueSubject<HomeState, Never> { get }
+
     func dispatch(_ message: HomeMessage)
 }
 

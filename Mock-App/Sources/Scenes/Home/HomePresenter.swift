@@ -10,6 +10,8 @@ import Foundation
 import Combine
 
 final class HomePresenter: HomePresentation {
+    var state: CurrentValueSubject<HomeState, Never> = .init(.initial)
+
     private let context: Home.Context
     private let interactor: HomeUsecase
     private let wireframeClosure: (Home.Wireframe) -> Void

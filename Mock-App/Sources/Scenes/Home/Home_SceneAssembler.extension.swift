@@ -15,9 +15,8 @@ extension SceneAssembler {
     static func home(context: Home.Context, wireframeClosure: @escaping (Home.Wireframe) -> Void) -> (Environment) -> HomeView {
         return { environment in
             let controller = Storyboard<HomeViewController>(name: "Home").instantiate()
-// TODO: inject presenter to HomeViewController
-//            let presenter = HomePresenter(context: context, interactor: HomeInteractor(), wireframeClosure: wireframeClosure)
-//            controller.inject(dependency: .init(presenter: presenter))
+            let presenter = HomePresenter(context: context, interactor: HomeInteractor(), wireframeClosure: wireframeClosure)
+            controller.inject(dependency: .init(presenter: presenter))
             return controller
         }
     }

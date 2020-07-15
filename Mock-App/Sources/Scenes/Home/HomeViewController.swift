@@ -20,11 +20,21 @@ final class HomeViewController: UIViewController, HomeView, Injectable {
 
     private var cancellables = Set<AnyCancellable>()
 
+    @IBOutlet weak var titleLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        dependency.presenter.state
+            .sink(receiveValue: bind(state:))
+            .store(in: &cancellables)
     }
 
     func inject(dependency: HomeViewController.Dependency) {
         self.dependency = dependency
+    }
+
+    private func bind(state: HomeState) {
+        titleLabel.text = state.title
     }
 }
