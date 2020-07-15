@@ -2,7 +2,7 @@
 //  SubContentPresenter.swift
 //  Mock-App
 //
-//  Created by Hinomori Hiroya on 14/07/2020.
+//  Created by Hiroya Hinomori on 15/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -10,6 +10,8 @@ import Foundation
 import Combine
 
 final class SubContentPresenter: SubContentPresentation {
+    var state: CurrentValueSubject<SubContent.State, Never> = .init(.initial)
+
     private let context: SubContent.Context
     private let interactor: SubContentUsecase
     private let wireframeClosure: (SubContent.Wireframe) -> Void
@@ -22,7 +24,7 @@ final class SubContentPresenter: SubContentPresentation {
         self.wireframeClosure = wireframeClosure
     }
 
-    func dispatch(_ message: SubContentMessage) {
+    func dispatch(_ message: SubContent.Message) {
         if case .tappedDetail = message {
             wireframeClosure(.detail)
         }

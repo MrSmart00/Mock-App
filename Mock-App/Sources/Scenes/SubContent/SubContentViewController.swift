@@ -2,7 +2,7 @@
 //  SubContentViewController.swift
 //  Mock-App
 //
-//  Created by Hinomori Hiroya on 14/07/2020.
+//  Created by Hiroya Hinomori on 15/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -26,6 +26,10 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dependency.presenter.state
+            .sink(receiveValue: { [weak self] in self?.bind(state: $0) })
+            .store(in: &cancellables)
+
         detailButton.tapPublisher
             .sink { [weak self] (_) in
                 self?.dependency.presenter.dispatch(.tappedDetail)
@@ -36,4 +40,9 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
     func inject(dependency: SubContentViewController.Dependency) {
         self.dependency = dependency
     }
+
+    private func bind(state: SubContent.State) {
+        // TODO: layout a view from state
+    }
+
 }
