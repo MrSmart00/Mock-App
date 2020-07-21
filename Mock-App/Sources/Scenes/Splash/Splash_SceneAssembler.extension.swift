@@ -15,7 +15,9 @@ extension SceneAssembler {
     static func splash(context: Splash.Context, wireframeClosure: @escaping (Splash.Wireframe) -> Void) -> (Environment) -> SplashView {
         return { environment in
             let controller = Storyboard<SplashViewController>(name: "Splash").instantiate()
-            let presenter = SplashPresenter(context: context, interactor: SplashInteractor(), wireframeClosure: wireframeClosure)
+            let presenter = SplashPresenter(context: context,
+                                            interactor: SplashInteractor(tokenRepository: environment.accessTokenRepository),
+                                            wireframeClosure: wireframeClosure)
             controller.inject(dependency: .init(presenter: presenter))
             return controller
         }

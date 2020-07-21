@@ -31,6 +31,16 @@ final class SignupViewController: UIViewController, SignupView, Injectable {
         dependency.presenter.state
             .sink(receiveValue: { [weak self] in self?.bind(state: $0) })
             .store(in: &cancellables)
+
+        signupButton.tapPublisher
+            .sink { [weak self] (_) in
+                guard let email = self?.emailField.text,
+                    let password = self?.passwordField.text else {
+                    return
+                }
+                self?.dependency.presenter.dispatch(.tappedSignup(email: email, password: password))
+            }
+            .store(in: &cancellables)
     }
 
     func inject(dependency: SignupViewController.Dependency) {

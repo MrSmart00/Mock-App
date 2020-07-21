@@ -8,6 +8,8 @@
 
 import UIKit
 import Combine
+import Domain
+import MockAPI
 
 enum Signup {
     public struct Context {
@@ -16,7 +18,7 @@ enum Signup {
     }
 
     public enum Wireframe {
-        // TODO: Add trigger for view transition
+        case mainTab
     }
 
     public struct State {
@@ -27,12 +29,12 @@ enum Signup {
     }
 
     public enum Message {
-        // TODO: Add view events for dispatch via presenter
+        case tappedSignup(email: String, password: String)
     }
 }
 
 protocol SignupUsecase {
-    // TODO: Add function for data fetch from Server
+    func signup(email: String, password: String) -> AnyPublisher<Void, APIError>
 }
 
 protocol SignupPresentation {

@@ -25,6 +25,24 @@ final class SignupPresenter: SignupPresentation {
     }
 
     func dispatch(_ message: Signup.Message) {
-        // TODO: Impl with combine
+        switch message {
+        case let .tappedSignup(email, password):
+            interactor.signup(email: email, password: password)
+            .sink(
+                receiveCompletion: {
+                    switch $0 {
+                    case .failure(let error):
+                        print(error)
+                    case .finished:
+                        print("finished")
+                    }
+                },
+                receiveValue: { [weak self] result in
+                    print(result)
+                    self?.wireframeClosure(.mainTab)
+                }
+            )
+            .store(in: &cancellables)
+        }
     }
 }

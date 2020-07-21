@@ -7,10 +7,28 @@
 //
 
 import Foundation
+import Combine
+import MockAPI
+import Domain
 
 final class SignupInteractor: SignupUsecase {
 
-    init() {
+    let networkService: NetworkServiceType
+    var tokenRepository: TokenRepositoryType
+
+    init(networkService: NetworkServiceType, tokenRepository: TokenRepositoryType) {
+        self.networkService = networkService
+        self.tokenRepository = tokenRepository
+    }
+
+    func signup(email: String, password: String) -> AnyPublisher<Void, APIError> {
+        let credential = Credential(email: email, password: password)
+        return networkService.request(Endpoint.Authorization.PostSignup(body: credential))
+            .handleEvents(receiveOutput: { [weak self] in
+                self?.tokenRepository.token = Token(rawValue: $0.token)
+            })
+            .map { _ in }
+            .eraseToAnyPublisher()
     }
 
 }

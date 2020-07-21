@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Domain
 
 enum Splash {
     public struct Context {
@@ -33,7 +34,7 @@ enum Splash {
 }
 
 protocol SplashUsecase {
-    // TODO: Add function for data fetch from Server
+    func hasAccessToken() -> AnyPublisher<Bool, Never>
 }
 
 protocol SplashPresentation {
