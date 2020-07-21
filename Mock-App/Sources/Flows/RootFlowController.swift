@@ -12,6 +12,8 @@ class RootFlowController: FlowController {
     private let environmentClosure: () -> Environment
     private let flowAssembler: () -> FlowAssemblerProtocol
 
+    private var splash: SplashView?
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,6 +39,7 @@ class RootFlowController: FlowController {
             }
         )(environmentClosure())
         add(child: controller)
+        splash = controller
     }
 
     func mainTab() {
@@ -46,7 +49,11 @@ class RootFlowController: FlowController {
     }
 
     func auth() {
-        let controller = flowAssembler().auth()
+        let controller = flowAssembler().auth { [weak self] in
+            self?.splash?.reload()
+        }
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)
         controller.start()
     }

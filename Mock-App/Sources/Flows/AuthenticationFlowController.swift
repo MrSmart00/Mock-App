@@ -23,8 +23,14 @@ class AuthenticationFlowController: NavigationFlowController {
     public override func start() {
         let controller = SceneAssembler.signup(
             context: .init(),
-            wireframeClosure: { [weak self] _ in }
+            wireframeClosure: { [weak self] _ in
+                self?.dismiss()
+            }
         )(environmentClosure())
         navigation.viewControllers = [controller]
+    }
+
+    func dismiss() {
+        navigation.dismiss(animated: true, completion: nil)
     }
 }

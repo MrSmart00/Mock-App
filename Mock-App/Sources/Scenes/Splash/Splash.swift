@@ -44,5 +44,5 @@ protocol SplashPresentation {
 }
 
 protocol SplashView: UIViewController {
-
+    func reload()
 }
