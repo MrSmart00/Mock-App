@@ -29,7 +29,7 @@ final class SplashPresenter: SplashPresentation {
             Timer.publish(every: 1, on: .main, in: .default)
                 .autoconnect()
                 .sink { [unowned self] (_) in
-                    self.wireframeClosure(.mainTab)
+                    self.wireframeClosure(.auth)
                 }
                 .store(in: &cancellables)
         }

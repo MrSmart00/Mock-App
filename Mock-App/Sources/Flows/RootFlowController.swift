@@ -28,7 +28,10 @@ class RootFlowController: FlowController {
         let controller = SceneAssembler.splash(
             context: Splash.Context(),
             wireframeClosure: { [weak self] in
-                if case .mainTab = $0 {
+                switch $0 {
+                case .auth:
+                    self?.auth()
+                case .mainTab:
                     self?.mainTab()
                 }
             }
@@ -39,6 +42,12 @@ class RootFlowController: FlowController {
     func mainTab() {
         let controller = flowAssembler().mainTab()
         transit(to: controller)
+        controller.start()
+    }
+
+    func auth() {
+        let controller = flowAssembler().auth()
+        present(controller, animated: true, completion: nil)
         controller.start()
     }
 

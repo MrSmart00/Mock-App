@@ -1,23 +1,22 @@
 //
-//  Splash.swift
+//  Signup.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 15/07/2020.
+//  Created by Hiroya Hinomori on 21/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
 import UIKit
 import Combine
 
-enum Splash {
+enum Signup {
     public struct Context {
         public init() {}
         // TODO: Add properties for Presenter initialization
     }
 
     public enum Wireframe {
-        case auth
-        case mainTab
+        // TODO: Add trigger for view transition
     }
 
     public struct State {
@@ -28,20 +27,20 @@ enum Splash {
     }
 
     public enum Message {
-        case viewDidAppear
+        // TODO: Add view events for dispatch via presenter
     }
 }
 
-protocol SplashUsecase {
+protocol SignupUsecase {
     // TODO: Add function for data fetch from Server
 }
 
-protocol SplashPresentation {
-    var state: CurrentValueSubject<Splash.State, Never> { get }
+protocol SignupPresentation {
+    var state: CurrentValueSubject<Signup.State, Never> { get }
 
-    func dispatch(_ message: Splash.Message)
+    func dispatch(_ message: Signup.Message)
 }
 
-protocol SplashView: UIViewController {
+protocol SignupView: UIViewController {
 
 }

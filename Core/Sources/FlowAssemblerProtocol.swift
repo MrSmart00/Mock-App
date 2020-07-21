@@ -10,6 +10,7 @@ import Domain
 
 public protocol FlowAssemblerProtocol {
     func root() -> FlowController
+    func auth() -> NavigationFlowController
     func mainTab() -> FlowController
     func home() -> NavigationFlowController
     func subContent(mainTabClosure: ((MainTabItem) -> Void)?) -> NavigationFlowController
