@@ -16,7 +16,7 @@ public class HomeFlowController: NavigationFlowController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(environmentClosure: @escaping () -> Environment) {
+    init(environmentClosure: @escaping () -> Environment) {
         self.environmentClosure = environmentClosure
 
         super.init(nibName: nil, bundle: nil)

@@ -17,7 +17,9 @@ extension SceneAssembler {
         return { environment in
             let controller = Storyboard<MainTabViewController>(name: "MainTab").instantiate()
             let presenter = MainTabPresenter(context: context,
-                                             interactor: MainTabInteractor(),
+                                             interactor: MainTabInteractor(
+                                                networkService: environment.networkService,
+                                                accessTokenRepository: environment.accessTokenRepository),
                                              wireframeClosure: wireframeClosure)
             controller.inject(dependency: .init(presenter: presenter, contents: contents))
             return controller
