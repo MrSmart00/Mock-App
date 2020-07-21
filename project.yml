@@ -26,6 +26,9 @@ packages:
   CombineCocoa:
     url: https://github.com/CombineCommunity/CombineCocoa.git
     from: 0.1.0
+  MockAPI:
+    url: https://github.com/MrSmart00/Mock-API-iOS.git
+    branch: master
 targets:
   Common:
     type: framework
@@ -73,6 +76,7 @@ targets:
       - target: Domain
       - target: Core
       - package: CombineCocoa
+      - package: MockAPI
     preBuildScripts:
       - name: "[SwiftLint] Run Script"
         script: "scripts/lint.sh"

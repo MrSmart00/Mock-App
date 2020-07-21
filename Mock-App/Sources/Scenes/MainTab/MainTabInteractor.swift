@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import MockAPI
 
 final class MainTabInteractor: MainTabUsecase {
+    let networkService: NetworkServiceType
+    let accessTokenRepository: TokenRepositoryType
 
-    init() {
+    init(networkService: NetworkServiceType, accessTokenRepository: TokenRepositoryType) {
+        self.networkService = networkService
+        self.accessTokenRepository = accessTokenRepository
     }
-
 }
