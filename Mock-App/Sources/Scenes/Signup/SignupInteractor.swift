@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import Core
 import MockAPI
 
 final class SignupInteractor: SignupUsecase {
@@ -20,9 +21,10 @@ final class SignupInteractor: SignupUsecase {
         self.tokenRepository = tokenRepository
     }
 
-    func signup(email: String, password: String) -> AnyPublisher<Void, APIError> {
+    func signup(email: String, password: String) -> AnyPublisher<Void, SceneError> {
         let credential = Credential(email: email, password: password)
         return networkService.request(Endpoint.Authorization.PostSignup(body: credential))
+            .mapError(SceneError.convert)
             .handleEvents(receiveOutput: { [weak self] in
                 self?.tokenRepository.token = Token(rawValue: $0.token)
             })

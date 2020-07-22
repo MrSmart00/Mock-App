@@ -27,21 +27,17 @@ final class LoginPresenter: LoginPresentation {
     func dispatch(_ message: Login.Message) {
         if case let .tappedLogin(email, password) = message {
             interactor.login(email: email, password: password)
-            .sink(
-                receiveCompletion: {
-                    switch $0 {
-                    case .failure(let error):
-                        print(error)
-                    case .finished:
-                        print("finished")
+                .sink(
+                    receiveCompletion: { [weak self] in
+                        if case let .failure(error) = $0, case let .error(title, message) = error {
+                            self?.wireframeClosure(.error(title: title, message: message))
+                        }
+                    },
+                    receiveValue: { [weak self] _ in
+                        self?.wireframeClosure(.mainTab)
                     }
-                },
-                receiveValue: { [weak self] result in
-                    print(result)
-                    self?.wireframeClosure(.mainTab)
-                }
-            )
-            .store(in: &cancellables)
+                )
+                .store(in: &cancellables)
         }
     }
 }
