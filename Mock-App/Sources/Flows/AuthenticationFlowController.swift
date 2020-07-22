@@ -21,13 +21,28 @@ class AuthenticationFlowController: NavigationFlowController {
     }
 
     public override func start() {
+        let controller = SceneAssembler.authtop(
+            context: .init(),
+            wireframeClosure: { [weak self] in
+                switch $0 {
+                case .signup:
+                    self?.signup()
+                case .login:
+                    break
+                }
+            }
+        )(environmentClosure())
+        navigation.viewControllers = [controller]
+    }
+
+    func signup() {
         let controller = SceneAssembler.signup(
             context: .init(),
             wireframeClosure: { [weak self] _ in
                 self?.dismiss()
             }
         )(environmentClosure())
-        navigation.viewControllers = [controller]
+        navigation.pushViewController(controller, animated: true)
     }
 
     func dismiss() {

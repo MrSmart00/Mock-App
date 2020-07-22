@@ -19,7 +19,7 @@ final class SplashInteractor: SplashUsecase {
     }
 
     func hasAccessToken() -> AnyPublisher<Bool, Never> {
-        return Just(0)
+        return Just(())
             .map { [weak self] _ in
                 !(self?.tokenRepository.token.isNil ?? true)
             }
