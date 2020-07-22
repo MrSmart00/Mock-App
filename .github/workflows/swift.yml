@@ -30,7 +30,3 @@ jobs:
       run: bundle exec fastlane build
     - name: Test
       run: bundle exec fastlane tests
-#     - name: Build
-#       run: xcodebuild -workspace Mock-App.xcworkspace -scheme Mock-App -sdk iphonesimulator -configuration Debug build 
-#     - name: Tests　ちょっとわからん...
-#       run: xcodebuild test-without-building -workspace Mock-App.xcworkspace -scheme Mock-App -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.3'
