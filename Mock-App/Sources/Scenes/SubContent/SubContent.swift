@@ -17,6 +17,7 @@ enum SubContent {
 
     public enum Wireframe {
         case detail
+        case splash
     }
 
     public struct State {
@@ -29,11 +30,12 @@ enum SubContent {
 
     public enum Message {
         case tappedDetail
+        case tappedLogout
     }
 }
 
 protocol SubContentUsecase {
-    // TODO: Add function for data fetch from Server
+    func logout() -> AnyPublisher<Void, Never>
 }
 
 protocol SubContentPresentation {

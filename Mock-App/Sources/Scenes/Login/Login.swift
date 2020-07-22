@@ -1,8 +1,8 @@
 //
-//  Signup.swift
+//  Login.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 21/07/2020.
+//  Created by Hiroya Hinomori on 22/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import Combine
 import MockAPI
 
-enum Signup {
+enum Login {
     public struct Context {
         public init() {}
         // TODO: Add properties for Presenter initialization
@@ -28,20 +28,20 @@ enum Signup {
     }
 
     public enum Message {
-        case tappedSignup(email: String, password: String)
+        case tappedLogin(email: String, password: String)
     }
 }
 
-protocol SignupUsecase {
-    func signup(email: String, password: String) -> AnyPublisher<Void, APIError>
+protocol LoginUsecase {
+    func login(email: String, password: String) -> AnyPublisher<Void, APIError>
 }
 
-protocol SignupPresentation {
-    var state: CurrentValueSubject<Signup.State, Never> { get }
+protocol LoginPresentation {
+    var state: CurrentValueSubject<Login.State, Never> { get }
 
-    func dispatch(_ message: Signup.Message)
+    func dispatch(_ message: Login.Message)
 }
 
-protocol SignupView: UIViewController {
+protocol LoginView: UIViewController {
 
 }

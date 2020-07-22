@@ -31,6 +31,8 @@ class SubContentFlowController: NavigationFlowController {
                 switch $0 {
                 case .detail:
                     self?.detail()
+                case .splash:
+                    self?.splash()
                 }
             }
         )(environmentClosure())
@@ -51,4 +53,7 @@ class SubContentFlowController: NavigationFlowController {
         present(controller, animated: true, completion: nil)
     }
 
+    private func splash() {
+        NotificationCenter.default.post(name: .loggedOut, object: nil)
+    }
 }

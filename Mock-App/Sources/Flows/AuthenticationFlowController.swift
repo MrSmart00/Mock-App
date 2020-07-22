@@ -28,7 +28,7 @@ class AuthenticationFlowController: NavigationFlowController {
                 case .signup:
                     self?.signup()
                 case .login:
-                    break
+                    self?.login()
                 }
             }
         )(environmentClosure())
@@ -37,6 +37,16 @@ class AuthenticationFlowController: NavigationFlowController {
 
     func signup() {
         let controller = SceneAssembler.signup(
+            context: .init(),
+            wireframeClosure: { [weak self] _ in
+                self?.dismiss()
+            }
+        )(environmentClosure())
+        navigation.pushViewController(controller, animated: true)
+    }
+
+    func login() {
+        let controller = SceneAssembler.login(
             context: .init(),
             wireframeClosure: { [weak self] _ in
                 self?.dismiss()

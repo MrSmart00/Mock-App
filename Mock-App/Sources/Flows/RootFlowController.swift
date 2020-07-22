@@ -7,11 +7,12 @@
 
 import UIKit
 import Core
+import Combine
 
 class RootFlowController: FlowController {
     private let environmentClosure: () -> Environment
     private let flowAssembler: () -> FlowAssemblerProtocol
-
+    private var cancellables = Set<AnyCancellable>()
     private var splash: SplashView?
 
     @available(*, unavailable)
@@ -24,6 +25,15 @@ class RootFlowController: FlowController {
         self.flowAssembler = flowAssembler
 
         super.init(nibName: nil, bundle: nil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.publisher(for: .loggedOut)
+            .sink(receiveValue: { [weak self] _ in
+                self?.start()
+            })
+            .store(in: &cancellables)
     }
 
     override func start() {
