@@ -17,7 +17,7 @@ final class LoginViewController: UIViewController, LoginView, Injectable {
         let presenter: LoginPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -50,10 +50,6 @@ final class LoginViewController: UIViewController, LoginView, Injectable {
                 self?.dependency.presenter.dispatch(.tappedLogin(email: email, password: password))
             }
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: LoginViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: Login.State) {

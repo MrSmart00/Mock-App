@@ -16,7 +16,7 @@ final class HomeViewController: UIViewController, HomeView, Injectable {
         let presenter: HomePresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -37,10 +37,6 @@ final class HomeViewController: UIViewController, HomeView, Injectable {
         dependency.presenter.state
             .sink(receiveValue: { [weak self] in self?.bind(state: $0) })
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: HomeViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: Home.State) {

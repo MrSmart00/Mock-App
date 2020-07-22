@@ -17,7 +17,7 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
         let presenter: SubContentPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -52,10 +52,6 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
                 self?.dependency.presenter.dispatch(.tappedLogout)
             }
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: SubContentViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: SubContent.State) {

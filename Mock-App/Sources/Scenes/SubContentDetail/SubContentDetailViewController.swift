@@ -16,7 +16,7 @@ final class SubContentDetailViewController: UIViewController, SubContentDetailVi
         let presenter: SubContentDetailPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -47,10 +47,6 @@ final class SubContentDetailViewController: UIViewController, SubContentDetailVi
                     .dispatch(.tappedHome)
             }
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: SubContentDetailViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: SubContentDetail.State) {

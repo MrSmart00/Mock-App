@@ -16,7 +16,7 @@ final class SplashViewController: UIViewController, SplashView, Injectable {
         let presenter: SplashPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -40,10 +40,6 @@ final class SplashViewController: UIViewController, SplashView, Injectable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dependency.presenter.dispatch(.viewDidAppear)
-    }
-
-    func inject(dependency: SplashViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: Splash.State) {
