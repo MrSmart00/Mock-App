@@ -25,3 +25,12 @@ public struct Storyboard<V> where V: UIViewController {
         return controller
     }
 }
+
+public extension Storyboard where V: Injectable {
+    func instantiate(with dependency: V.Dependency) -> V {
+        let storyboard = UIStoryboard(name: name, bundle: bundle)
+        return storyboard.instantiateInitialViewController { (corder) in
+            V.init(coder: corder, dependency: dependency)
+        }!
+    }
+}

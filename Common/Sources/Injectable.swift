@@ -10,5 +10,6 @@ import Foundation
 public protocol Injectable {
     associatedtype Dependency
 
+    init?(coder: NSCoder, dependency: Dependency)
     func inject(dependency: Dependency)
 }

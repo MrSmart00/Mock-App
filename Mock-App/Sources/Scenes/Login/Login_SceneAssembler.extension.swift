@@ -14,10 +14,11 @@ extension SceneAssembler {
 
     static func login(context: Login.Context, wireframeClosure: @escaping (Login.Wireframe) -> Void) -> (Environment) -> LoginView {
         return { environment in
-            let controller = Storyboard<LoginViewController>(name: "Login").instantiate()
-            let presenter = LoginPresenter(context: context, interactor: LoginInteractor(networkService: environment.networkService, tokenRepository: environment.accessTokenRepository), wireframeClosure: wireframeClosure)
-            controller.inject(dependency: .init(presenter: presenter))
-            return controller
+            let interactor = LoginInteractor(networkService: environment.networkService,
+                                             tokenRepository: environment.accessTokenRepository)
+            let presenter = LoginPresenter(context: context, interactor: interactor, wireframeClosure: wireframeClosure)
+            return Storyboard<LoginViewController>(name: "Login")
+                .instantiate(with: .init(presenter: presenter))
         }
     }
 

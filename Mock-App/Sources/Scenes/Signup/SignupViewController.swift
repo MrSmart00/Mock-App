@@ -25,6 +25,15 @@ final class SignupViewController: UIViewController, SignupView, Injectable {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
 
+    init?(coder: NSCoder, dependency: Dependency) {
+        self.dependency = dependency
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

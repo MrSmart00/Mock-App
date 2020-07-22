@@ -25,6 +25,15 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
 
+    init?(coder: NSCoder, dependency: Dependency) {
+        self.dependency = dependency
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
