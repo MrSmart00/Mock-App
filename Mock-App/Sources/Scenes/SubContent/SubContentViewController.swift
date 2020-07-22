@@ -17,13 +17,22 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
         let presenter: SubContentPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+
+    init?(coder: NSCoder, dependency: Dependency) {
+        self.dependency = dependency
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +52,6 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
                 self?.dependency.presenter.dispatch(.tappedLogout)
             }
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: SubContentViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: SubContent.State) {

@@ -14,10 +14,9 @@ extension SceneAssembler {
 
     static func authtop(context: AuthTop.Context, wireframeClosure: @escaping (AuthTop.Wireframe) -> Void) -> (Environment) -> AuthTopView {
         return { environment in
-            let controller = Storyboard<AuthTopViewController>(name: "AuthTop").instantiate()
             let presenter = AuthTopPresenter(context: context, interactor: AuthTopInteractor(), wireframeClosure: wireframeClosure)
-            controller.inject(dependency: .init(presenter: presenter))
-            return controller
+            return Storyboard<AuthTopViewController>(name: "AuthTop")
+                .instantiate(with: .init(presenter: presenter))
         }
     }
 

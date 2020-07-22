@@ -17,13 +17,22 @@ final class SignupViewController: UIViewController, SignupView, Injectable {
         let presenter: SignupPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
+
+    init?(coder: NSCoder, dependency: Dependency) {
+        self.dependency = dependency
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +50,6 @@ final class SignupViewController: UIViewController, SignupView, Injectable {
                 self?.dependency.presenter.dispatch(.tappedSignup(email: email, password: password))
             }
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: SignupViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: Signup.State) {

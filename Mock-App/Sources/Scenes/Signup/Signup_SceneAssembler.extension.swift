@@ -14,14 +14,13 @@ extension SceneAssembler {
 
     static func signup(context: Signup.Context, wireframeClosure: @escaping (Signup.Wireframe) -> Void) -> (Environment) -> SignupView {
         return { environment in
-            let controller = Storyboard<SignupViewController>(name: "Signup").instantiate()
             let presenter = SignupPresenter(context: context,
                                             interactor: SignupInteractor(
                                                 networkService: environment.networkService,
                                                 tokenRepository: environment.accessTokenRepository),
                                             wireframeClosure: wireframeClosure)
-            controller.inject(dependency: .init(presenter: presenter))
-            return controller
+            return Storyboard<SignupViewController>(name: "Signup")
+                .instantiate(with: .init(presenter: presenter))
         }
     }
 

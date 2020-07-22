@@ -14,10 +14,9 @@ extension SceneAssembler {
 
     static func subcontentdetail(context: SubContentDetail.Context, wireframeClosure: @escaping (SubContentDetail.Wireframe) -> Void) -> (Environment) -> SubContentDetailView {
         return { environment in
-            let controller = Storyboard<SubContentDetailViewController>(name: "SubContentDetail").instantiate()
             let presenter = SubContentDetailPresenter(context: context, interactor: SubContentDetailInteractor(), wireframeClosure: wireframeClosure)
-            controller.inject(dependency: .init(presenter: presenter))
-            return controller
+            return Storyboard<SubContentDetailViewController>(name: "SubContentDetail")
+                .instantiate(with: .init(presenter: presenter))
         }
     }
 

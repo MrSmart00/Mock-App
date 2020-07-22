@@ -17,13 +17,22 @@ final class AuthTopViewController: UIViewController, AuthTopView, Injectable {
         let presenter: AuthTopPresentation
     }
 
-    private var dependency: Dependency!
+    private let dependency: Dependency
 
     private var cancellables = Set<AnyCancellable>()
 
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginBUtton: UIButton!
-    
+
+    init?(coder: NSCoder, dependency: Dependency) {
+        self.dependency = dependency
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,10 +51,6 @@ final class AuthTopViewController: UIViewController, AuthTopView, Injectable {
                 self?.dependency.presenter.dispatch(.tappedLogin)
             }
             .store(in: &cancellables)
-    }
-
-    func inject(dependency: AuthTopViewController.Dependency) {
-        self.dependency = dependency
     }
 
     private func bind(state: AuthTop.State) {
