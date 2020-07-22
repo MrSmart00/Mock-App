@@ -48,8 +48,13 @@ class AuthenticationFlowController: NavigationFlowController {
     func login() {
         let controller = SceneAssembler.login(
             context: .init(),
-            wireframeClosure: { [weak self] _ in
-                self?.dismiss()
+            wireframeClosure: { [weak self] in
+                switch $0 {
+                case .mainTab:
+                    self?.dismiss()
+                case let .error(title, message):
+                    self?.showAlert(title: title, message: message)
+                }
             }
         )(environmentClosure())
         navigation.pushViewController(controller, animated: true)
@@ -57,5 +62,14 @@ class AuthenticationFlowController: NavigationFlowController {
 
     func dismiss() {
         navigation.dismiss(animated: true, completion: nil)
+    }
+
+    func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(.init(
+            title: "OK",
+            style: .default,
+            handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

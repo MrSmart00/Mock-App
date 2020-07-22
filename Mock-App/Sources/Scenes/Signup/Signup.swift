@@ -8,7 +8,7 @@
 
 import UIKit
 import Combine
-import MockAPI
+import Core
 
 enum Signup {
     public struct Context {
@@ -18,6 +18,7 @@ enum Signup {
 
     public enum Wireframe {
         case mainTab
+        case error(title: String?, message: String?)
     }
 
     public struct State {
@@ -33,7 +34,7 @@ enum Signup {
 }
 
 protocol SignupUsecase {
-    func signup(email: String, password: String) -> AnyPublisher<Void, APIError>
+    func signup(email: String, password: String) -> AnyPublisher<Void, SceneError>
 }
 
 protocol SignupPresentation {

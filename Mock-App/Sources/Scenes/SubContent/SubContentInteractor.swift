@@ -22,7 +22,6 @@ final class SubContentInteractor: SubContentUsecase {
         Just(())
             .handleEvents(receiveOutput: { [weak self] (_) in
                 self?.accessTokenRepository.token = nil
-                print(self?.accessTokenRepository.token)
             })
             .eraseToAnyPublisher()
     }
