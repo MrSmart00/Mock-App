@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MockAPI
+import Core
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
 
         let flowAssembler = FlowAssembler(environmentClosure: {
-            .init(networkService: NetworkService(baseURL: URL(string: "http://127.0.0.1:3200")),
+            .init(networkService: MockAppNetwork.local(),
                   accessTokenRepository: AccessTokenRepository(userDefaults: .standard))
         })
         let root = flowAssembler.root()

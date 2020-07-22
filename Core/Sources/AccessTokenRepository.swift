@@ -8,10 +8,10 @@
 import Foundation
 import MockAPI
 
-struct AccessTokenRepository: TokenRepositoryType {
+public struct AccessTokenRepository: TokenRepositoryType {
     let userDefaults: UserDefaults
 
-    var token: Token? {
+    public var token: Token? {
         get {
             let rawValue = userDefaults.value(forKey: "\(type(of: self)).token") as? String
             return rawValue.flatMap(Token.init(rawValue:))
@@ -21,7 +21,7 @@ struct AccessTokenRepository: TokenRepositoryType {
         }
     }
 
-    init(userDefaults: UserDefaults) {
+    public init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
 }

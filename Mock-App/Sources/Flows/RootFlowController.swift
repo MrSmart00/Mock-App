@@ -59,9 +59,7 @@ class RootFlowController: FlowController {
     }
 
     func auth() {
-        let controller = flowAssembler().auth { [weak self] in
-            self?.splash?.reload()
-        }
+        let controller = flowAssembler().auth()
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)

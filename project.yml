@@ -61,6 +61,7 @@ targets:
     dependencies:
       - target: Common
       - target: Domain
+      - package: MockAPI
   Mock-App:
     type: application
     info:
