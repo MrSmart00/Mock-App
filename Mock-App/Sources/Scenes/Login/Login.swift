@@ -1,23 +1,22 @@
 //
-//  Splash.swift
+//  Login.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 15/07/2020.
+//  Created by Hiroya Hinomori on 22/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
 import UIKit
 import Combine
-import Domain
+import MockAPI
 
-enum Splash {
+enum Login {
     public struct Context {
         public init() {}
         // TODO: Add properties for Presenter initialization
     }
 
     public enum Wireframe {
-        case auth
         case mainTab
     }
 
@@ -29,20 +28,20 @@ enum Splash {
     }
 
     public enum Message {
-        case viewDidAppear
+        case tappedLogin(email: String, password: String)
     }
 }
 
-protocol SplashUsecase {
-    func hasAccessToken() -> AnyPublisher<Bool, Never>
+protocol LoginUsecase {
+    func login(email: String, password: String) -> AnyPublisher<Void, APIError>
 }
 
-protocol SplashPresentation {
-    var state: CurrentValueSubject<Splash.State, Never> { get }
+protocol LoginPresentation {
+    var state: CurrentValueSubject<Login.State, Never> { get }
 
-    func dispatch(_ message: Splash.Message)
+    func dispatch(_ message: Login.Message)
 }
 
-protocol SplashView: UIViewController {
-    func reload()
+protocol LoginView: UIViewController {
+
 }

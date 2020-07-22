@@ -21,6 +21,10 @@ struct FlowAssembler: FlowAssemblerProtocol {
         RootFlowController(environmentClosure: environmentClosure, flowAssembler: { self })
     }
 
+    func auth(completion: () -> Void) -> NavigationFlowController {
+        AuthenticationFlowController(environmentClosure: environmentClosure)
+    }
+
     func mainTab() -> FlowController {
         MainTabFlowController(environmentClosure: environmentClosure, flowAssembler: { self })
     }

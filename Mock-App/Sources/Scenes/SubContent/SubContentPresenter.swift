@@ -25,8 +25,15 @@ final class SubContentPresenter: SubContentPresentation {
     }
 
     func dispatch(_ message: SubContent.Message) {
-        if case .tappedDetail = message {
+        switch message {
+        case .tappedDetail:
             wireframeClosure(.detail)
+        case .tappedLogout:
+            interactor.logout()
+                .sink { [weak self] (_) in
+                    self?.wireframeClosure(.splash)
+                }
+                .store(in: &cancellables)
         }
     }
 }

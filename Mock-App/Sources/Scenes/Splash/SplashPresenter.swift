@@ -26,10 +26,11 @@ final class SplashPresenter: SplashPresentation {
 
     func dispatch(_ message: Splash.Message) {
         if case .viewDidAppear = message {
-            Timer.publish(every: 1, on: .main, in: .default)
-                .autoconnect()
-                .sink { [unowned self] (_) in
-                    self.wireframeClosure(.mainTab)
+            self.interactor
+                .hasAccessToken()
+                .delay(for: .seconds(1), scheduler: RunLoop.main)
+                .sink { [weak self] (hasToken) in
+                    self?.wireframeClosure(hasToken ? .mainTab : .auth)
                 }
                 .store(in: &cancellables)
         }

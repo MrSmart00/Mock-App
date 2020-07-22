@@ -7,10 +7,24 @@
 //
 
 import Foundation
+import Combine
+import MockAPI
 
 final class SubContentInteractor: SubContentUsecase {
 
-    init() {
+    private var accessTokenRepository: TokenRepositoryType!
+
+    init(accessTokenRepository: TokenRepositoryType) {
+        self.accessTokenRepository = accessTokenRepository
+    }
+
+    func logout() -> AnyPublisher<Void, Never> {
+        Just(())
+            .handleEvents(receiveOutput: { [weak self] (_) in
+                self?.accessTokenRepository.token = nil
+                print(self?.accessTokenRepository.token)
+            })
+            .eraseToAnyPublisher()
     }
 
 }

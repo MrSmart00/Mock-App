@@ -1,24 +1,23 @@
 //
-//  Splash.swift
+//  AuthTop.swift
 //  Mock-App
 //
-//  Created by Hiroya Hinomori on 15/07/2020.
+//  Created by Hiroya Hinomori on 22/07/2020.
 //  Copyright © 2020 hoge.company. All rights reserved.
 //
 
 import UIKit
 import Combine
-import Domain
 
-enum Splash {
+enum AuthTop {
     public struct Context {
         public init() {}
         // TODO: Add properties for Presenter initialization
     }
 
     public enum Wireframe {
-        case auth
-        case mainTab
+        case signup
+        case login
     }
 
     public struct State {
@@ -29,20 +28,21 @@ enum Splash {
     }
 
     public enum Message {
-        case viewDidAppear
+        case tappedSignup
+        case tappedLogin
     }
 }
 
-protocol SplashUsecase {
-    func hasAccessToken() -> AnyPublisher<Bool, Never>
+protocol AuthTopUsecase {
+    // TODO: Add function for data fetch from Server
 }
 
-protocol SplashPresentation {
-    var state: CurrentValueSubject<Splash.State, Never> { get }
+protocol AuthTopPresentation {
+    var state: CurrentValueSubject<AuthTop.State, Never> { get }
 
-    func dispatch(_ message: Splash.Message)
+    func dispatch(_ message: AuthTop.Message)
 }
 
-protocol SplashView: UIViewController {
-    func reload()
+protocol AuthTopView: UIViewController {
+
 }

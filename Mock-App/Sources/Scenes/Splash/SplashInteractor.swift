@@ -7,10 +7,23 @@
 //
 
 import Foundation
+import Combine
+import MockAPI
 
 final class SplashInteractor: SplashUsecase {
 
-    init() {
+    let tokenRepository: TokenRepositoryType
+
+    init(tokenRepository: TokenRepositoryType) {
+        self.tokenRepository = tokenRepository
+    }
+
+    func hasAccessToken() -> AnyPublisher<Bool, Never> {
+        return Just(())
+            .map { [weak self] _ in
+                !(self?.tokenRepository.token.isNil ?? true)
+            }
+            .eraseToAnyPublisher()
     }
 
 }

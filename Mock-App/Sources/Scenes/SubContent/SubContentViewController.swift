@@ -23,6 +23,7 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,12 @@ final class SubContentViewController: UIViewController, SubContentView, Injectab
         detailButton.tapPublisher
             .sink { [weak self] (_) in
                 self?.dependency.presenter.dispatch(.tappedDetail)
+            }
+            .store(in: &cancellables)
+
+        logoutButton.tapPublisher
+            .sink { [weak self] (_) in
+                self?.dependency.presenter.dispatch(.tappedLogout)
             }
             .store(in: &cancellables)
     }

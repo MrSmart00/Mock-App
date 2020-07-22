@@ -25,18 +25,25 @@
                                 <rect key="frame" x="297" y="792" width="77" height="30"/>
                                 <state key="normal" title="しょうさい"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lz-WH-LEo">
+                                <rect key="frame" x="40" y="792" width="77" height="30"/>
+                                <state key="normal" title="ログアウト"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="QPU-Dy-0Sw" firstAttribute="centerX" secondItem="AR0-Ch-2Fp" secondAttribute="centerX" id="30a-FY-GFH"/>
+                            <constraint firstItem="At2-qW-Z7B" firstAttribute="bottom" secondItem="6Lz-WH-LEo" secondAttribute="bottom" constant="40" id="ADV-V0-WxT"/>
                             <constraint firstItem="At2-qW-Z7B" firstAttribute="bottom" secondItem="ubq-Te-dDh" secondAttribute="bottom" constant="40" id="DV0-P1-ioO"/>
                             <constraint firstItem="At2-qW-Z7B" firstAttribute="trailing" secondItem="ubq-Te-dDh" secondAttribute="trailing" constant="40" id="Hn0-iB-PLj"/>
                             <constraint firstItem="QPU-Dy-0Sw" firstAttribute="centerY" secondItem="AR0-Ch-2Fp" secondAttribute="centerY" id="faG-Uh-DyI"/>
+                            <constraint firstItem="6Lz-WH-LEo" firstAttribute="leading" secondItem="At2-qW-Z7B" secondAttribute="leading" constant="40" id="lMv-A2-tKp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="At2-qW-Z7B"/>
                     </view>
                     <connections>
                         <outlet property="detailButton" destination="ubq-Te-dDh" id="Ejj-qu-cq7"/>
+                        <outlet property="logoutButton" destination="6Lz-WH-LEo" id="U3g-YB-DFq"/>
                         <outlet property="titleLabel" destination="QPU-Dy-0Sw" id="1qz-cD-hl4"/>
                     </connections>
                 </viewController>

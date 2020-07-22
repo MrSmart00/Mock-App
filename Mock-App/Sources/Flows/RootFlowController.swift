@@ -7,10 +7,13 @@
 
 import UIKit
 import Core
+import Combine
 
 class RootFlowController: FlowController {
     private let environmentClosure: () -> Environment
     private let flowAssembler: () -> FlowAssemblerProtocol
+    private var cancellables = Set<AnyCancellable>()
+    private var splash: SplashView?
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -24,21 +27,44 @@ class RootFlowController: FlowController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.publisher(for: .loggedOut)
+            .sink(receiveValue: { [weak self] _ in
+                self?.start()
+            })
+            .store(in: &cancellables)
+    }
+
     override func start() {
         let controller = SceneAssembler.splash(
             context: Splash.Context(),
             wireframeClosure: { [weak self] in
-                if case .mainTab = $0 {
+                switch $0 {
+                case .auth:
+                    self?.auth()
+                case .mainTab:
                     self?.mainTab()
                 }
             }
         )(environmentClosure())
         add(child: controller)
+        splash = controller
     }
 
     func mainTab() {
         let controller = flowAssembler().mainTab()
         transit(to: controller)
+        controller.start()
+    }
+
+    func auth() {
+        let controller = flowAssembler().auth { [weak self] in
+            self?.splash?.reload()
+        }
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
         controller.start()
     }
 

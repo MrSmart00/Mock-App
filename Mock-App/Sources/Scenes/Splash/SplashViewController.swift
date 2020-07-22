@@ -41,4 +41,7 @@ final class SplashViewController: UIViewController, SplashView, Injectable {
         // TODO: layout a view from state
     }
 
+    func reload() {
+        dependency.presenter.dispatch(.viewDidAppear)
+    }
 }
